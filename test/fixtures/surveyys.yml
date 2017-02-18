@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  owner: one
+  title: MyString
+  token: MyString
+
+two:
+  owner: two
+  title: MyString
+  token: MyString

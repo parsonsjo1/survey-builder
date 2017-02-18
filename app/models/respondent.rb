@@ -1,0 +1,2 @@
+class Respondent < User
+end
