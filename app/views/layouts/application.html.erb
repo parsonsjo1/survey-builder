@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Survey</title>
-    <%= csrf_meta_tags %>
+	<head>
+		<title>Survey</title>
+		<%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	</head>
 
-  <body>
-    <%= yield %>
-  </body>
+	<body>
+
+		<!--Header-->
+		<%= render "shared/header" %>
+
+		<div class="container">
+			<%= yield %>
+		</div>
+	
+		<!--Footer-->
+		<%= render "shared/footer" %>
+	
+	</body>
 </html>

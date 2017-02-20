@@ -3,7 +3,7 @@ class SurveysController < ApplicationController
     end
 
     def new
-        render text: 'new survey'
+        
     end
 
     def create
