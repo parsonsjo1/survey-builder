@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220015716) do
+ActiveRecord::Schema.define(version: 20170220042700) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "response_id", null: false
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170220015716) do
     t.string   "title",      null: false
     t.string   "color"
     t.string   "token",      null: false
+    t.boolean  "is_active",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_surveys_on_user_id", using: :btree
