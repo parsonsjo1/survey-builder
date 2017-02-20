@@ -1,2 +1,0 @@
-class Respondent < User
-end

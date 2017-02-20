@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170218075049) do
+ActiveRecord::Schema.define(version: 20170220015716) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "response_id", null: false
@@ -29,29 +29,32 @@ ActiveRecord::Schema.define(version: 20170218075049) do
   end
 
   create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "surveyy_id",  null: false
+    t.integer  "survey_id",   null: false
     t.string   "title"
     t.boolean  "is_required"
     t.string   "type"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["surveyy_id"], name: "index_questions_on_surveyy_id", using: :btree
+    t.index ["survey_id"], name: "index_questions_on_survey_id", using: :btree
   end
 
   create_table "responses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "surveyy_id", null: false
+    t.integer  "survey_id",  null: false
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["surveyy_id"], name: "index_responses_on_surveyy_id", using: :btree
+    t.index ["survey_id"], name: "index_responses_on_survey_id", using: :btree
+    t.index ["user_id"], name: "index_responses_on_user_id", using: :btree
   end
 
-  create_table "surveyys", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "surveys", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",    null: false
     t.string   "title",      null: false
+    t.string   "color"
     t.string   "token",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_surveyys_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_surveys_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -65,7 +68,8 @@ ActiveRecord::Schema.define(version: 20170218075049) do
   add_foreign_key "answers", "responses"
   add_foreign_key "choices", "answers"
   add_foreign_key "choices", "questions"
-  add_foreign_key "questions", "surveyys"
-  add_foreign_key "responses", "surveyys"
-  add_foreign_key "surveyys", "users"
+  add_foreign_key "questions", "surveys"
+  add_foreign_key "responses", "surveys"
+  add_foreign_key "responses", "users"
+  add_foreign_key "surveys", "users"
 end
