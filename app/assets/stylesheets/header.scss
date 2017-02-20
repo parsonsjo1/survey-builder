@@ -1,0 +1,15 @@
+.navbar {
+	background-color: black;
+
+	.nav-item {
+
+		.nav-link {
+			color: white;
+
+			&:hover {
+				background-color: white;
+				color:black;
+			}
+		}
+	}
+}
