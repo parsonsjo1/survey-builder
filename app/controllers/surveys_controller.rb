@@ -6,13 +6,15 @@ class SurveysController < ApplicationController
 
   def new
 
-    #@survey = Survey.new(user_id: current_user.id, title: "New Survey", color: "#CBE068", token: SecureRandom.uuid, is_active: false)
-    @survey = Survey.find(1)    
-
+    @survey = Survey.find_by(id: 1)
+    if !@survey    
+      @survey = Survey.new(user_id: current_user.id, title: "New Survey", color: "#CBE068", token: SecureRandom.uuid, is_active: false)
+    end
+    
   end
 
   def create
-    
+
     render json: @survey
 
   end
