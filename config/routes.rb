@@ -1,24 +1,26 @@
 Rails.application.routes.draw do
 
-  root 'surveys#new'
+  root 'users#new'
+
+  get '/logout', to: 'users#logout_user'
   
-  get 'users/new'
+  resources :users do
+    resources :surveys
+  end
 
-  get 'users/create'
+  resources :surveys do
+    resources :questions
+    resources :responses
+  end
 
-  get 'users/show'
+  resources :questions do
+    resources :choices
+    resources :answers
+  end
 
-  get 'users/edit'
-
-  get 'users/update'
-
-  get 'users/destroy'
-
-  resources :surveys
-  resources :questions
-  resources :choices
-  resources :responses
-  resources :answers
+  resources :answers do
+    resources :choices
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

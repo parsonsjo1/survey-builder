@@ -1,2 +1,18 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="container form-container fill">
+	<div class="row fill">
+		<div class="col-6 offset-3 align-self-center">
+
+			<%= form_tag("/users", method: "post") do %>
+
+				<div class="form-group">
+					<input class="form-control" id="user-email" name="user[email]" placeholder="Email (required)" type="text"></input>
+					<input class="form-control" id="user-name" name="user[name]" placeholder="Name (optional)" type="text"></input>
+				</div>
+
+				<button class="btn btn-primary" type="submit">Login/Signup</button>
+
+			<% end %>
+			
+		</div>
+	</div>
+</div>

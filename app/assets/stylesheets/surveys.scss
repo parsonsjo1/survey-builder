@@ -1,19 +1,80 @@
 // Place all the styles related to the Surveys controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#survey-container {
-	height: 100%;
-	margin-right: 0;
 
-	.row {
-		height: inherit;
-	}
+.border {
+	border-style: none solid;
+	border-color: black;
+	border-width: 2px;
+}
+
+.fill {
+	height: 100%;
+}
+
+#survey-container{
+	height: inherit;
+	background-color: white;
+	margin-right: 0;
+	padding: 0;
 
 	#survey {
-		background-color: gray;
+		padding: 0;
+		background-color: white;
+		border-style: none solid;
+		
+		#survey-title {
+	
+			height: 200px;
+			padding: 0;
+
+			h1 {
+
+			}
+		}
+
+		#survey-questions {
+			padding: 0;
+
+			.question-box {
+				border-style: dotted;
+				height: 300px;
+				margin-top: 25px;
+
+				#new-question {
+					height: inherit;
+					line-height: 300px; /*Needs to be the same as height for vertical alignment*/
+
+					button {
+						vertical-align: middle;
+						width: 100%;
+
+						&:hover {
+							cursor: pointer;
+						}
+					}
+
+					.question-title {
+
+					}
+
+					.question-content {
+
+					}
+				}
+			}
+		}
 	}
 
-	.sidebar {
+	#sidebar {
+		background-color: white;
 
+		#question-title {
+
+			h1 {
+
+				margin: auto auto;
+			}
+		}
 	}
 }

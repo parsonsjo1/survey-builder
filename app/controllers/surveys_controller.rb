@@ -1,23 +1,31 @@
+require('securerandom')
+
 class SurveysController < ApplicationController
-    def index
-    end
+  def index
+  end
 
-    def new
-        
-    end
+  def new
 
-    def create
-    end
+    #@survey = Survey.new(user_id: current_user.id, title: "New Survey", color: "#CBE068", token: SecureRandom.uuid, is_active: false)
+    @survey = Survey.find(1)    
 
-    def show
-    end
+  end
 
-    def edit
-    end
+  def create
+    
+    render json: @survey
 
-    def update
-    end
+  end
 
-    def destroy
-    end
+  def show
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+  end
 end

@@ -1,10 +1,30 @@
-<div class="container-fluid" id="survey-container">
-	<div class="row">
-		<div class="col-9 offset-1" id="survey">
-			<h1>New Survey</h1>
+<style>
+ #survey-title {
+ 	background-color: <%= @survey.color %>;
+ }
+</style>
+
+
+<div class="row no-gutters"  id="survey-container">
+	
+	<div class="col-9 offset-1" id="survey">
+
+		<div class="row no-gutters align-items-center" id="survey-title">
+				<div class="col-4 offset-1">
+					<h1><%= @survey.title %></h1>
+				</div>
 		</div>
-		<div class="col-2 sidebar">
-			<h1>Sidebar</h1>
+
+		<div class="row no-gutters align-items-center" id="survey-questions">
+			<%= render "new_question" %>
+		</div>
+
+	</div>
+
+	<div class="col-2" id="sidebar">
+		<div class="row no-gutters align-items-center" id="question-title">
+			<h1>Question #</h1>
 		</div>
 	</div>
+
 </div>
