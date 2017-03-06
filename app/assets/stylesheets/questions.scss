@@ -1,7 +1,70 @@
 
+	#survey-questions {
+		padding: 0;
+
+		.question-box {
+			border-style: dotted;
+			height: 300px;
+			margin-top: 25px;
+
+			#new-question {
+				height: inherit;
+				line-height: 300px; /*Needs to be the same as height for vertical alignment*/
+
+				.btn {
+					vertical-align: middle;
+					width: 100%;
+
+					&:hover {
+						cursor: pointer;
+					}
+				}
+
+				.question-title {
+
+					input {
+						width: 100%;
+					}
+
+				}
+
+				.question-content {
+
+				}
+			}
+		}
+	}
+
 #survey-questions {
+	padding: 0;
+
+	#add-new-question-box {
+		#new-question {
+		height: inherit;
+		line-height: 300px; /*Needs to be the same as height for vertical alignment*/
+
+			.btn {
+				vertical-align: middle;
+				width: 100%;
+
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
+	}
 
 	.question-box {
+		border-style: dotted;
+		height: 300px;
+		margin-top: 25px;
+
+		&:hover {
+			cursor: pointer;
+			background-color: gray;
+		}
+
+
 
 		.question-title {
 			padding: 5px 5px 0px 20px;
@@ -16,6 +79,7 @@
 				}
 			}
 			input {
+				width: 100%;
 				font-size: 1.75rem;
 			}
 
@@ -42,4 +106,8 @@
 		}
 	}
 
+	.active-question {
+		border-style: solid;
+		border-color: green;
+	}
 }

@@ -1,7 +1,7 @@
 
 // Add a new question on click
 $('#add_new_question_button').click(function(event) {
-
+	event.stopPropagation();
 	// Post a new question to the server
 	let baseUri = event.currentTarget.baseURI;
 	let surveyId = getSurveyId(baseUri);
@@ -18,6 +18,25 @@ $('#survey-questions').on('click', '#delete-question-button', function(event) {
 	let questionId = event.currentTarget.closest('.question-box').id;
 	deleteQuestion(surveyId, questionId);
 
+});
+
+// Activate and/or update sidebar
+$('#survey-questions').on('click', '.question-box', function(event) {
+	let className = event.currentTarget.className;
+	let questionId = event.currentTarget.id;
+
+	// Remove previous active question and update new active question
+	$('.question-box').removeClass('active-question');
+	$('#' + questionId).addClass('active-question');
+
+	// Update sidebar with question number
+	console.log('clicked question box id ' + questionId + ' number ' + getQuestionNumber(className));
+	//console.log(className);
+	updateSidebarTitle(getQuestionNumber(className));
+
+	let baseUri = event.currentTarget.baseURI;
+	let surveyId = getSurveyId(baseUri);
+	updateSidebarContent(surveyId, questionId);
 });
 
 // Edit question title by changing element to input
@@ -43,7 +62,7 @@ $('.question-box').on('blur', '.question-title', function(event) {
 	questionTitleElement.replaceWith('<h3>' + questionTitleElement.val() + '</h3>');
 
 	//Update question title
-	console.log(event.currentTarget.baseURI);
+	//console.log(event.currentTarget.baseURI);
 	let baseUri = event.currentTarget.baseURI;
 	let surveyId = getSurveyId(baseUri);
 
@@ -90,6 +109,17 @@ var deleteQuestion = function(surveyId, questionId) {
 	});
 }
 
+var getQuestionNumber = function(className) {
+	let questionRegex = /sequence-([0-9]+)/;
+	let questionMatch = questionRegex.exec(className);
+	if(questionMatch) {
+		return questionMatch[1];
+	}
+	else {
+		console.log(questionMatch)
+	}
+}
+
 var getSurveyId = function(baseUri) {
 	let surveyRegex = /surveys\/([0-9]+)/;
 	let surveyMatch = surveyRegex.exec(baseUri);
@@ -115,4 +145,36 @@ var updateQuestionTitle = function(surveyId, questionId, newQuestionTitle) {
 			console.log(error);
 	});
 
+};
+
+// Send update question request to sever via ajax
+var updateActiveQuestion = function(questionId) {
+
+
+}
+
+// Send get request for generated html to append to sidebar
+var updateSidebarContent = function(surveyId, questionId) {
+	// console.log(surveyId);
+	// console.log(questionId);
+	// console.log('/surveys/' + surveyId + '/questions/' + questionId);
+
+	$.ajax({
+		url: '/surveys/' + surveyId + '/questions/' + questionId, 
+		method: "GET",
+		dataType: "html"
+	}).success(function(sidebarHtml) {
+			console.log("success");
+			console.log(sidebarHtml);
+			// Append sidebarhtml underneath the question title
+	}).error(function(error) {
+			console.log("error");
+			console.log(error);
+	});
+};
+
+var updateSidebarTitle = function(questionNumber) {
+	if(questionNumber) {
+		$('#sidebar-question-title').find('h1').first().text('Question ' + questionNumber);
+	}
 };

@@ -1,0 +1,44 @@
+#sidebar {
+	background-color: white;
+
+	#sidebar-question-title {
+		border-bottom-style: solid;
+
+		.col-12 {
+			text-align: center;
+			h1 {
+				margin: 10px auto;
+			}
+		}
+	}
+
+	#sidebar-question-content {
+		font-size: 2em;
+
+		#required-row {
+
+			margin-top: 10px;
+			margin-bottom: 10px;
+
+			.custom-checkbox {
+				padding-top: 1.90rem;
+
+				.custom-control-indicator {
+					width: 2rem;
+					height: 2rem;
+				}	
+			}
+		}
+
+		#type-row {
+
+			margin-top: 10px;
+			margin-bottom: 10px;
+
+			.custom-select {
+				height: initial;
+			}
+		}
+
+	}
+}
