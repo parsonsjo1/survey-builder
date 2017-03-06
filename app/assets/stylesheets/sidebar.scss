@@ -1,5 +1,7 @@
 #sidebar {
 	background-color: white;
+	position: fixed;
+	right: 0;
 
 	#sidebar-question-title {
 		border-bottom-style: solid;
@@ -37,6 +39,24 @@
 
 			.custom-select {
 				height: initial;
+			}
+
+			#question-type-content {
+				margin: 10px 0;
+				padding: 0px;
+
+				.choice {
+					width: 54%;
+				}
+
+				.btn {
+					width: 80%;
+
+					&:hover {
+						cursor: pointer;
+					}
+				}
+
 			}
 		}
 

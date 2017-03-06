@@ -1,40 +1,3 @@
-
-	#survey-questions {
-		padding: 0;
-
-		.question-box {
-			border-style: dotted;
-			height: 300px;
-			margin-top: 25px;
-
-			#new-question {
-				height: inherit;
-				line-height: 300px; /*Needs to be the same as height for vertical alignment*/
-
-				.btn {
-					vertical-align: middle;
-					width: 100%;
-
-					&:hover {
-						cursor: pointer;
-					}
-				}
-
-				.question-title {
-
-					input {
-						width: 100%;
-					}
-
-				}
-
-				.question-content {
-
-				}
-			}
-		}
-	}
-
 #survey-questions {
 	padding: 0;
 
@@ -102,6 +65,14 @@
 
 			h4 {
 
+			}
+
+			#question-box-dropdown {
+				width: 100%;
+
+				&:hover {
+					cursor: pointer;
+				}
 			}
 		}
 	}

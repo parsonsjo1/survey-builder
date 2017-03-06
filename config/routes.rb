@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get '/logout', to: 'users#logout_user'
 
+  #put '/sidebar/questions/:id', to: 'sidebar#update'
+
   #namespace admin
   
   resources :users do

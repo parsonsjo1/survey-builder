@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
     sequence = sequence + 1
     #redirect_to edit_user_survey_path(current_user.id, params[:survey_id])
     #render json: @question
-    render partial: 'questions/question_box', locals: {id: @question.id, sequence: sequence, title: @question.title}
+    render partial: 'questions/question_box', locals: {question: @question, sequence: sequence}
 
   end
 
@@ -28,15 +28,7 @@ class QuestionsController < ApplicationController
 
     @question = Question.find(params[:id])
 
-    if(@question.question_type == "Multiple Choice")
-      render partial: 'choices/multiple_choice'
-      return
-    elsif(@question.question_type == "Free Response")
-      render partial: 'choices/free_response'
-      return
-    else
-      #render partial: 'questions/multiple_choice', collection: @question
-    end
+    render partial: 'sidebar/sidebar_question_content', locals: { question: @question }
 
   end
 
@@ -50,8 +42,8 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       format.xml { render xml: @question.to_xml }
-      format.json { render json: @question.to_json }
-      format.html { render partial: 'choices/multiple_choice' }
+      #format.json {sidebar: render_to_string partial: 'sidebar/dropdown', question_box: render_to_string partial: 'questions/dropdown'} 
+      format.html { render partial: 'sidebar/dropdown', locals: { question: @question } }
     end
 
   end

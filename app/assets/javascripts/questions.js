@@ -32,9 +32,8 @@ $('#survey-questions').on('click', '.question-box', function(event) {
 	$('#' + questionId).addClass('active-question');
 
 	// Update sidebar with question number
-	console.log('clicked question box id ' + questionId + ' number ' + getQuestionNumber(className));
-	//console.log(className);
-	updateSidebarTitle(getQuestionNumber(className));
+	console.log('clicked question box id ' + questionId + ' number ' + getSequenceNumber(className));
+	updateSidebarTitle(getSequenceNumber(className));
 
 	let baseUri = event.currentTarget.baseURI;
 	let surveyId = getSurveyId(baseUri);
@@ -112,7 +111,7 @@ var deleteQuestion = function(surveyId, questionId) {
 	});
 }
 
-var getQuestionNumber = function(className) {
+var getSequenceNumber = function(className) {
 	let questionRegex = /sequence-([0-9]+)/;
 	let questionMatch = questionRegex.exec(className);
 	if(questionMatch) {
@@ -141,7 +140,7 @@ var updateQuestionTitle = function(surveyId, questionId, newQuestionTitle) {
 		data: dataToSend,
 		dataType: "json"
 	}).success(function(data) {
-			console.log("success");
+			console.log("success updated title");
 			console.log(data);
 	}).error(function(error) {
 			console.log("error");
@@ -155,29 +154,3 @@ var updateActiveQuestion = function(questionId) {
 
 
 }
-
-// Send get request for generated html to append to sidebar
-var updateSidebarContent = function(surveyId, questionId) {
-	// console.log(surveyId);
-	// console.log(questionId);
-	// console.log('/surveys/' + surveyId + '/questions/' + questionId);
-
-	$.ajax({
-		url: '/surveys/' + surveyId + '/questions/' + questionId, 
-		method: "GET",
-		dataType: "html"
-	}).success(function(sidebarHtml) {
-			console.log("success");
-			console.log(sidebarHtml);
-			// Append sidebarhtml underneath the question title
-	}).error(function(error) {
-			console.log("error");
-			console.log(error);
-	});
-};
-
-var updateSidebarTitle = function(questionNumber) {
-	if(questionNumber) {
-		$('#sidebar-question-title').find('h1').first().text('Question ' + questionNumber);
-	}
-};

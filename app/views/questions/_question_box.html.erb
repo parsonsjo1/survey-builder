@@ -1,7 +1,7 @@
-<div class="col-8 offset-2 question-box sequence-<%= sequence %>" id="<%= id %>">
+<div class="col-8 offset-2 question-box sequence-<%= sequence %>" id="<%= question.id %>">
 	<div class="row">
 		<div class="col-11 question-title">
-			<h3><%= title %></h3>
+			<h3><%= question.title %></h3>
 		</div>
 		<div class="col-1 question-delete">
 			<button class="btn btn-danger" id="delete-question-button" type="button">X</button>
@@ -10,7 +10,13 @@
 	</div>
 	<div class="row fill align-items-center">
 		<div class="col-12 question-content">
-			<h4>Question Content</h4>
+		 	<% if(question.question_type == "Multiple Choice") %>
+		      <%= render partial: 'questions/multiple_choice', locals: { question: question } %>
+			<% elsif(question.question_type == "Free Response") %>
+		      <%= render partial: 'questions/free_response', locals: { question: question } %>
+		  <% elsif(question.question_type == "Dropdown") %>
+		      <%= render partial: 'questions/dropdown', locals: { question: question } %>
+			<% end %>
 		</div>
 	</div>
 </div>

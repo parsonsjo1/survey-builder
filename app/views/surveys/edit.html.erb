@@ -27,42 +27,13 @@
 		<div class="col-3" id="sidebar">
 			<div class="row no-gutters align-items-center" id="sidebar-question-title">
 				<div class="col-12">
-					<!-- Dynamically change to active question -->
+					<!-- Dynamically change to active question number -->
 					<h1>Question #</h1>
 				</div>
 			</div>
 
-			<div class="row no-gutters align-items-center" id="sidebar-question-content">
-				<div class="col-11 offset-1" id="required-row">
-					<span>Required:</span>
-					<label class="custom-control custom-checkbox">
-					  <input type="checkbox" class="custom-control-input">
-					  <span class="custom-control-indicator"></span>
-					</label>
-				</div>
+			<!-- Sidebar question content added dynamically -->
 
-				<div class="col-11 offset-1" id="type-row">
-					<span>Type:</span>
-					<select class="custom-select" id="question-type">
-					  <option selected></option>
-					  <option value="1">Multiple Choice</option>
-					  <option value="2">Free Response</option>
-					</select>
-				</div>
-
-				<!-- Add cap ignore -->
-<!-- 		 if(@question.type == "Multiple Choice") %>
-
-				 else %>
-
-				 end %> -->
-			</div>
-
-<!-- 		render partial: "choices/multiple_choice" %>
-				render partial: "choices/multiple_choice" %>
-				render partial: "choices/multiple_choice" %> -->
-
-			</div>
 		</div>
 		
 	</div>

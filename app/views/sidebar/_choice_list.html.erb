@@ -1,0 +1,4 @@
+
+<% question.choices.each_with_index do |choice, i| %>
+	<%= render partial: 'sidebar/choice', locals: {choice: choice, i: i} %>
+<% end %>

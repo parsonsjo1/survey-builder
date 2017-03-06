@@ -1,6 +1,6 @@
 
 <% @survey.questions.each_with_index do |question, index| %>
 	
-	<%= render partial: 'questions/question_box', locals: {id: question.id, sequence: index + 1, title: question.title} %>
+	<%= render partial: 'questions/question_box', locals: {question: question, sequence: index + 1} %>
 
 <% end %>

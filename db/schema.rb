@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170306065448) do
+ActiveRecord::Schema.define(version: 20170306211908) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "response_id", null: false
@@ -20,8 +20,9 @@ ActiveRecord::Schema.define(version: 20170306065448) do
   end
 
   create_table "choices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "answer_id",   null: false
+    t.integer  "answer_id"
     t.integer  "question_id", null: false
+    t.string   "value"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["answer_id"], name: "index_choices_on_answer_id", using: :btree
