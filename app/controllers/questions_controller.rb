@@ -28,9 +28,9 @@ class QuestionsController < ApplicationController
 
     @question = Question.find(params[:id])
 
-    if(@question.type == "Multiple Choice")
+    if(@question.question_type == "Multiple Choice")
       render partial: 'questions/multiple_choice', collection: @question
-    elsif(@question.type == "Free Response")
+    elsif(@question.question_type == "Free Response")
       render partial: 'questions/free_response', collection: @question
     else
       #render partial: 'questions/multiple_choice', collection: @question
@@ -64,7 +64,7 @@ class QuestionsController < ApplicationController
 
   private
     def question_params
-      params.require(:question).permit(:survey_id, :title, :is_required, :type)
+      params.require(:question).permit(:survey_id, :title, :is_required, :question_type)
     end
 
 end

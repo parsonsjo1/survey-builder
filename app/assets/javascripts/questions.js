@@ -76,7 +76,7 @@ $('.question-box').on('blur', '.question-title', function(event) {
 var addNewQuestion = function(surveyId) {
 	console.log("Add new Question");
 	//console.log('/users/' + userId + '/surveys/' + surveyId);
-	let dataToSend = { question: { survey_id: surveyId, title: "Question Title", is_required: false, type: "" }};
+	let dataToSend = { question: { survey_id: surveyId, title: "Question Title", is_required: false, question_type: "" }};
 
 	$.ajax({
 		url: '/surveys/' + surveyId + '/questions', 

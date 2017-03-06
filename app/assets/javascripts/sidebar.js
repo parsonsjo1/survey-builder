@@ -18,7 +18,7 @@ $('#question-type').click(function(event) {
 
 var updateQuestionType = function(surveyId, questionId, questionType) {
 
-	let dataToSend = { question: { survey_id: surveyId, is_required: false, type: questionType }};
+	let dataToSend = { question: { survey_id: surveyId, is_required: false, question_type: questionType }};
 
 	$.ajax({
 		url: '/surveys/' + surveyId + '/questions/' + questionId, 
