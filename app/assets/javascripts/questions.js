@@ -11,6 +11,7 @@ $('#add_new_question_button').click(function(event) {
 
 // Delete a question on click
 $('#survey-questions').on('click', '#delete-question-button', function(event) {
+	event.stopPropagation();
 	//console.log(event.currentTarget.closest('.question-box').id);
 	// Delete question from the server
 	let baseUri = event.currentTarget.baseURI;
