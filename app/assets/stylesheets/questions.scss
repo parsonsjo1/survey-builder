@@ -1,3 +1,45 @@
-// Place all the styles related to the Questions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#survey-questions {
+
+	.question-box {
+
+		.question-title {
+			padding: 5px 5px 0px 20px;
+
+			h3 {
+				display: inline;
+
+				&:hover {
+					cursor: pointer;
+					background-color: black;
+					color: white;
+				}
+			}
+			input {
+				font-size: 1.75rem;
+			}
+
+		}
+
+		.question-delete {
+			text-align: center;
+			padding: 5px 10px 0px 0px;
+
+			.btn {
+
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
+
+		.question-content {
+			text-align: center;
+
+			h4 {
+
+			}
+		}
+	}
+
+}

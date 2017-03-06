@@ -1,30 +1,23 @@
-<style>
- #survey-title {
- 	background-color: <%= @survey.color %>;
- }
-</style>
+<div class="container fill">
 
+	<h1>Survey List</h1>
+	<%= render partial: 'survey_list' %>
 
-<div class="row no-gutters"  id="survey-container">
-	
-	<div class="col-9 offset-1" id="survey">
+	<div class="row align-items-center">
 
-		<div class="row no-gutters align-items-center" id="survey-title">
-				<div class="col-4 offset-1">
-					<h1><%= @survey.title %></h1>
+		<div class="col-6 offset-3" id="create-survey">
+
+			<%= form_tag(controller: "surveys", action: "create", method: "post") do %>
+				<div class="form-group row">
+					<div class="col-6">
+						<%= text_field_tag(:title, nil, {class: 'form-control', placeholder: 'Survey Title', value: 'New Survey'}) %>
+					</div>
+					<div class="col-6">
+						<%= submit_tag("Add New Survey", class: 'btn btn-primary') %>
+					</div>
 				</div>
-		</div>
-
-		<div class="row no-gutters align-items-center" id="survey-questions">
-			<%= render "new_question" %>
+			<% end %>
 		</div>
 
 	</div>
-
-	<div class="col-2" id="sidebar">
-		<div class="row no-gutters align-items-center" id="question-title">
-			<h1>Question #</h1>
-		</div>
-	</div>
-
 </div>

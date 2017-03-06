@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root 'users#new'
 
   get '/logout', to: 'users#logout_user'
+
+  #namespace admin
   
   resources :users do
     resources :surveys
@@ -12,6 +14,8 @@ Rails.application.routes.draw do
     resources :questions
     resources :responses
   end
+
+  #look into nested attributes
 
   resources :questions do
     resources :choices

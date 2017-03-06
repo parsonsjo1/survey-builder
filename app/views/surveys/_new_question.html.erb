@@ -1,5 +1,6 @@
-<div class="col-8 offset-2 question-box">
+<div class="col-8 offset-2 question-box" id="add-new-question-box">
 	<div class="col-6 offset-3" id="new-question">
-		<button class="btn btn-primary" type="button">Add New Question</button>
+		<button class="btn btn-primary" id="add_new_question_button" type="button">Add New Question</button>
+<!-- 		<%= link_to "Add New Question", survey_questions_path(@survey.id, { question: { survey_id: @survey.id, title: "Question Title", is_required: false, type: "" }}), {method: :post, class: 'btn btn-primary'} %> -->
 	</div>
 </div>

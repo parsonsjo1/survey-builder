@@ -1,0 +1,16 @@
+<div class="col-8 offset-2 question-box" id="<%= id %>">
+	<div class="row">
+		<div class="col-11 question-title">
+			<h3><%= title %></h3>
+		</div>
+		<div class="col-1 question-delete">
+			<button class="btn btn-danger" id="delete-question-button" type="button">X</button>
+			<!--link_to "X", survey_question_path(question.survey_id, question.id), {method: :delete, class: 'btn btn-danger'} %> -->
+		</div>
+	</div>
+	<div class="row fill align-items-center">
+		<div class="col-12 question-content">
+			<h4>Question Content</h4>
+		</div>
+	</div>
+</div>

@@ -1,2 +1,35 @@
-<h1>Surveys#edit</h1>
-<p>Find me in app/views/surveys/edit.html.erb</p>
+<style>
+ #survey-title-box {
+ 	background-color: <%= @survey.color %>;
+ }
+</style>
+
+<div class="container-fluid fill">
+	<div class="row no-gutters fill-min">
+
+		<div class="col-8 offset-1" id="survey">
+
+			<div class="row no-gutters align-items-center" id="survey-title-box">
+					<div class="col-4 offset-1">
+						<h1 id="survey-title" ><%= @survey.title %></h1>
+					</div>
+			</div>
+
+			
+
+			<div class="row no-gutters align-items-center" id="survey-questions">
+				<%= render partial: "questions" %>
+				<%= render partial: "new_question" %>
+			</div>
+
+		</div>
+
+		<div class="col-3" id="sidebar">
+			<div class="row no-gutters align-items-center" id="question-title">
+				<!-- Dynamically change to active question -->
+				<h1>Question #</h1>
+			</div>
+		</div>
+		
+	</div>
+</div>	

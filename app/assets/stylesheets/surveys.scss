@@ -3,78 +3,107 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .border {
-	border-style: none solid;
+	border-style: solid;
 	border-color: black;
 	border-width: 2px;
 }
 
-.fill {
-	height: 100%;
+#survey-list {
+
 }
 
-#survey-container{
-	height: inherit;
-	background-color: white;
-	margin-right: 0;
-	padding: 0;
+#create-survey {
 
-	#survey {
-		padding: 0;
-		background-color: white;
-		border-style: none solid;
+	margin-top: 50px;
+
+	form {
 		
-		#survey-title {
-	
-			height: 200px;
-			padding: 0;
+		.form-control {
 
-			h1 {
-
-			}
 		}
 
-		#survey-questions {
-			padding: 0;
+	}
 
-			.question-box {
-				border-style: dotted;
-				height: 300px;
-				margin-top: 25px;
+	.btn {
+		width: 100%;
 
-				#new-question {
-					height: inherit;
-					line-height: 300px; /*Needs to be the same as height for vertical alignment*/
+		cursor: pointer;
+	}
+}
 
-					button {
-						vertical-align: middle;
+
+
+#survey {
+	padding: 0;
+	background-color: white;
+
+	border-style: none solid;
+	border-color: black;
+	border-width: 2px;
+
+	
+	#survey-title-box {
+
+		height: 200px;
+		padding: 0;
+
+		h1{	
+			cursor: pointer;
+
+			&:hover {
+				background-color: white;
+			}
+		}
+		input {
+			 font-size: 2.5rem;
+		}
+	}
+
+	#survey-questions {
+		padding: 0;
+
+		.question-box {
+			border-style: dotted;
+			height: 300px;
+			margin-top: 25px;
+
+			#new-question {
+				height: inherit;
+				line-height: 300px; /*Needs to be the same as height for vertical alignment*/
+
+				.btn {
+					vertical-align: middle;
+					width: 100%;
+
+					&:hover {
+						cursor: pointer;
+					}
+				}
+
+				.question-title {
+
+					input {
 						width: 100%;
-
-						&:hover {
-							cursor: pointer;
-						}
 					}
 
-					.question-title {
+				}
 
-					}
+				.question-content {
 
-					.question-content {
-
-					}
 				}
 			}
 		}
 	}
+}
 
-	#sidebar {
-		background-color: white;
+#sidebar {
+	background-color: white;
 
-		#question-title {
+	#question-title {
 
-			h1 {
+		h1 {
 
-				margin: auto auto;
-			}
+			margin: auto auto;
 		}
 	}
 }

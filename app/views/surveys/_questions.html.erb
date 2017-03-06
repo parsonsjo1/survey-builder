@@ -1,9 +1,6 @@
-<div class="col-8 offset-2 question-box">
-	<div class="col-12 question-title">
-		<h3>Question Title</h3>
-	</div>
 
-	<div class="col-12 question-content">
-		<h3>Question Content</h3>
-	</div>
-</div>
+<% @survey.questions.each do |question| %>
+
+	<%= render partial: 'questions/question_box', locals: {id: question.id, title: question.title} %>
+
+<% end %>

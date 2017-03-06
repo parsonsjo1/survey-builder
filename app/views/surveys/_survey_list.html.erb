@@ -1,0 +1,37 @@
+	<div class="row">
+		<div class="col-2">
+			<h2>Color</h2>
+		</div>
+		<div class="col-2">
+			<h2>Title</h2>
+		</div>
+		<div class="col-2">
+			<h2>Token</h2>
+		</div>
+		<div class="col-2">
+			<h2>Active</h2>
+		</div>
+	</div>
+
+<% @surveys.each do |survey| %>
+	<div class="row">
+		<div class="col-2">
+			<%= survey.color %>
+		</div>
+		<div class="col-2">
+			<%= survey.title %>
+		</div>
+		<div class="col-2">
+			<%= survey.token %>
+		</div>
+		<div class="col-2">
+			<%= survey.is_active %>
+		</div>
+		<div class="col-1">
+			<%= link_to "Delete", user_survey_path(current_user.id, survey.id), method: :delete %>
+		</div>
+		<div class="col-1">
+			<%= link_to "Edit", edit_user_survey_path(current_user.id, survey.id) %>
+		</div>
+	</div>
+<% end %>
