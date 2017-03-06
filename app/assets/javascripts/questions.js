@@ -23,6 +23,7 @@ $('#survey-questions').on('click', '#delete-question-button', function(event) {
 
 // Activate and/or update sidebar
 $('#survey-questions').on('click', '.question-box', function(event) {
+	event.stopPropagation();
 	let className = event.currentTarget.className;
 	let questionId = event.currentTarget.id;
 
@@ -42,6 +43,7 @@ $('#survey-questions').on('click', '.question-box', function(event) {
 
 // Edit question title by changing element to input
 $('.question-box').on('click', '.question-title', function(event) {
+	event.stopPropagation();
 	//console.log('clicked question title');
 	id = event.currentTarget.closest('.question-box').id;
 	questionTitleElement = $('#' + id).find('h3').first();

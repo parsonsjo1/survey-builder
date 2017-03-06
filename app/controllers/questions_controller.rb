@@ -29,9 +29,11 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
 
     if(@question.question_type == "Multiple Choice")
-      render partial: 'questions/multiple_choice', collection: @question
+      render partial: 'choices/multiple_choice'
+      return
     elsif(@question.question_type == "Free Response")
-      render partial: 'questions/free_response', collection: @question
+      render partial: 'choices/free_response'
+      return
     else
       #render partial: 'questions/multiple_choice', collection: @question
     end
@@ -45,11 +47,11 @@ class QuestionsController < ApplicationController
 
     @question = Question.find(params[:id])
     @question.update(question_params)
-    render json: @question
+
     respond_to do |format|
       format.xml { render xml: @question.to_xml }
       format.json { render json: @question.to_json }
-      format.html { render partial: 'questions/multiple_choice', collection: @question }
+      format.html { render partial: 'choices/multiple_choice' }
     end
 
   end
