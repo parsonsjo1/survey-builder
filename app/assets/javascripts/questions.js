@@ -1,28 +1,28 @@
+// Replaced with ruby javascript file
+// // Add a new question on click
+// $('#add_new_question_button').click(function(event) {
+// 	event.stopPropagation();
+// 	// Post a new question to the server
+// 	let baseUri = event.currentTarget.baseURI;
+// 	let surveyId = getSurveyId(baseUri);
+// 	addNewQuestion(surveyId);
 
-// Add a new question on click
-$('#add_new_question_button').click(function(event) {
-	event.stopPropagation();
-	// Post a new question to the server
-	let baseUri = event.currentTarget.baseURI;
-	let surveyId = getSurveyId(baseUri);
-	addNewQuestion(surveyId);
-
-});
+// });
 
 // Delete a question on click
-$('#survey-questions').on('click', '#delete-question-button', function(event) {
-	event.stopPropagation();
-	//console.log(event.currentTarget.closest('.question-box').id);
-	// Delete question from the server
-	let baseUri = event.currentTarget.baseURI;
-	let surveyId = getSurveyId(baseUri);
-	let questionId = event.currentTarget.closest('.question-box').id;
-	deleteQuestion(surveyId, questionId);
+// $('#survey-questions').on('click', '.delete-question-button', function(event) {
+// 	event.stopPropagation();
+// 	//console.log(event.currentTarget.closest('.question-box').id);
+// 	// Delete question from the server
+// 	let baseUri = event.currentTarget.baseURI;
+// 	let surveyId = getSurveyId(baseUri);
+// 	let questionId = event.currentTarget.closest('.question-box').id;
+// 	deleteQuestion(surveyId, questionId);
 
-});
+// });
 
 // Activate and/or update sidebar
-$('#survey-questions').on('click', '.question-box', function(event) {
+$('#survey-questions').on('click', '#question-box', function(event) {
 	event.stopPropagation();
 	let className = event.currentTarget.className;
 	let questionId = event.currentTarget.id;
@@ -75,41 +75,42 @@ $('.question-box').on('blur', '.question-title', function(event) {
 
 
 // Functions ordered alphabetical
-var addNewQuestion = function(surveyId) {
-	console.log("Add new Question");
-	//console.log('/users/' + userId + '/surveys/' + surveyId);
-	let dataToSend = { question: { survey_id: surveyId, title: "Question Title", is_required: false, question_type: "" }};
+// Replaced with ruby javascript file
+// var addNewQuestion = function(surveyId) {
+// 	console.log("Add new Question");
+// 	//console.log('/users/' + userId + '/surveys/' + surveyId);
+// 	let dataToSend = { question: { survey_id: surveyId, title: "Question Title", is_required: false, question_type: "" }};
 
-	$.ajax({
-		url: '/surveys/' + surveyId + '/questions', 
-		method: "POST",
-		data: dataToSend,
-		dataType: "html"
-	}).success(function(questionBoxHtml) {
-			console.log("success question added");
-			//console.log(questionBoxHtml);
-			$('#add-new-question-box').before(questionBoxHtml);
-	}).error(function(error) {
-			console.log("error add");
-			console.log(error);
-	});
-}
+// 	$.ajax({
+// 		url: '/surveys/' + surveyId + '/questions', 
+// 		method: "POST",
+// 		data: dataToSend,
+// 		dataType: "html"
+// 	}).success(function(questionBoxHtml) {
+// 			console.log("success question added");
+// 			//console.log(questionBoxHtml);
+// 			$('#add-new-question-box').before(questionBoxHtml);
+// 	}).error(function(error) {
+// 			console.log("error add");
+// 			console.log(error);
+// 	});
+// }
 
-var deleteQuestion = function(surveyId, questionId) {
-	console.log("Delete Question " + questionId);
-	//console.log('/surveys/' + surveyId + '/questions/' + questionId);
+// var deleteQuestion = function(surveyId, questionId) {
+// 	console.log("Delete Question " + questionId);
+// 	//console.log('/surveys/' + surveyId + '/questions/' + questionId);
 
-	$.ajax({
-		url: '/surveys/' + surveyId + '/questions/' + questionId, 
-		method: "DELETE"
-	}).success(function(data) {
-			console.log("success question deleted");
-			$('#' + questionId).remove();
-	}).error(function(error) {
-			console.log("error question not deleted");
-			console.log(error);
-	});
-}
+// 	$.ajax({
+// 		url: '/surveys/' + surveyId + '/questions/' + questionId, 
+// 		method: "DELETE"
+// 	}).success(function(data) {
+// 			console.log("success question deleted");
+// 			$('#' + questionId).remove();
+// 	}).error(function(error) {
+// 			console.log("error question not deleted");
+// 			console.log(error);
+// 	});
+// }
 
 var getSequenceNumber = function(className) {
 	let questionRegex = /sequence-([0-9]+)/;

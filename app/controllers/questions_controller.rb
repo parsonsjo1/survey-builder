@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def index
     @questions = Question.all
-
     render json: sequence
   end
 
@@ -13,13 +13,27 @@ class QuestionsController < ApplicationController
 
   def create
 
-    @question = Question.create!(question_params)
-    questions = Question.all
-    sequence = questions.index{|h| h[:id] == @question.id}
-    sequence = sequence + 1
-    #redirect_to edit_user_survey_path(current_user.id, params[:survey_id])
-    #render json: @question
-    render partial: 'questions/question_box', locals: {question: @question, sequence: sequence}
+    @question = Question.new(question_params)
+    #@question = Question.new(survey_id: 21, title: "New Question", is_required: false, question_type: "")
+
+    respond_to do |format|
+      if @question.save
+
+        # questions = Question.where(survey_id: params[@question.survey_id])
+
+        #Don't think I need this sequence number anymore because of javascript change
+        #question_index = questions.index{|h| h[:id] == @question.id}
+        #sequence = question_index + 1
+
+        #http://guides.rubyonrails.org/working_with_javascript_in_rails.html
+        #format.html { render partial: 'questions/question_box', locals: {question: @question, sequence: sequence} }
+        format.js {}
+        #format.json { render json: @question, status: :created, location: @question }
+      else
+        #format.html { render action: 'new' }
+        format.json { render json: @question.errors, status: :unprocessable_entity }
+      end
+    end
 
   end
 
@@ -41,7 +55,6 @@ class QuestionsController < ApplicationController
     @question.update(question_params)
 
     respond_to do |format|
-      format.xml { render xml: @question.to_xml }
       #format.json {sidebar: render_to_string partial: 'sidebar/dropdown', question_box: render_to_string partial: 'questions/dropdown'} 
       format.html { render partial: 'sidebar/dropdown', locals: { question: @question } }
     end
@@ -51,9 +64,20 @@ class QuestionsController < ApplicationController
   def destroy
 
     @question = Question.find(params[:id])
-    @question.destroy
-    redirect_to edit_user_survey_path(current_user.id, params[:survey_id])
+    #@question.destroy
+    #redirect_to edit_user_survey_path(current_user.id, params[:survey_id])
     
+    # http://guides.rubyonrails.org/working_with_javascript_in_rails.html
+    respond_to do |format|
+      if @question.destroy
+        #format.html {}
+        format.js {}
+        #format.json {}
+      else
+        #format.html { }
+        #format.json { render json: @question.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private

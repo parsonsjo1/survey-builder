@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-  root 'users#new'
+  # Take the user to their surveys. This will handle new users as well.
+  root 'surveys#index'
 
-  get '/logout', to: 'users#logout_user'
+  delete '/logout', to: 'users#logout_user'
 
   #put '/sidebar/questions/:id', to: 'sidebar#update'
 

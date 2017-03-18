@@ -1,0 +1,22 @@
+<div class="container fill">
+
+	<h1>Survey List</h1>
+	<!-- Try out a table here -->
+	<div class="row">
+		<%= render 'survey_headers' %>
+	</div>
+	<div class="row" id="surveys">
+		<%= render @surveys %>
+	</div>
+
+
+	<div class="row align-items-center">
+
+		<div class="col-6 offset-3" id="create-survey">
+
+			<%= render 'new' %>
+
+		</div>
+
+	</div>
+</div>

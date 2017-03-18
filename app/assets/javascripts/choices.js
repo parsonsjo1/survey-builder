@@ -26,7 +26,7 @@ $('#sidebar').on('click', '#add-new-choice-button', function(event) {
 var addNewChoice = function(questionId) {
 	console.log("Add new Choice");
 	console.log('/questions/' + questionId + '/choices');
-	let dataToSend = { choice: { question_id: questionId, value: "New Choice" }};
+	let dataToSend = { choice: { value: "New Choice" }};
 
 	$.ajax({
 		url: '/questions/' + questionId + '/choices', 

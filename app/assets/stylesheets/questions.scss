@@ -1,84 +1,85 @@
 #survey-questions {
 	padding: 0;
+}
 
-	#add-new-question-box {
-		#new-question {
-		height: inherit;
-		line-height: 300px; /*Needs to be the same as height for vertical alignment*/
 
-			.btn {
-				vertical-align: middle;
-				width: 100%;
+#add-new-question-box {
+	&:hover {
+		cursor: default;
+	}
 
-				&:hover {
-					cursor: pointer;
-				}
+	#new-question {
+	height: inherit;
+	line-height: 300px; /*Needs to be the same as height for vertical alignment*/
+
+		.btn, .button_to {
+			vertical-align: middle;
+			width: 100%;
+		}
+	}
+}
+
+.question-box, .new-question-box {
+	border-style: dotted;
+	height: 300px;
+	margin-top: 25px;
+
+	&:hover {
+		cursor: pointer;
+		background-color: gray;
+	}
+
+
+
+	.question-title {
+		padding: 5px 5px 0px 20px;
+
+		h3 {
+			display: inline;
+
+			&:hover {
+				cursor: pointer;
+				background-color: black;
+				color: white;
+			}
+		}
+		input {
+			width: 100%;
+			font-size: 1.75rem;
+		}
+
+	}
+
+	.question-delete {
+		text-align: center;
+		padding: 5px 10px 0px 0px;
+
+		.btn {
+
+			&:hover {
+				cursor: pointer;
 			}
 		}
 	}
 
-	.question-box {
-		border-style: dotted;
-		height: 300px;
-		margin-top: 25px;
+	.question-content {
+		text-align: center;
 
-		&:hover {
-			cursor: pointer;
-			background-color: gray;
-		}
-
-
-
-		.question-title {
-			padding: 5px 5px 0px 20px;
-
-			h3 {
-				display: inline;
-
-				&:hover {
-					cursor: pointer;
-					background-color: black;
-					color: white;
-				}
-			}
-			input {
-				width: 100%;
-				font-size: 1.75rem;
-			}
+		h4 {
 
 		}
 
-		.question-delete {
-			text-align: center;
-			padding: 5px 10px 0px 0px;
+		#question-box-dropdown {
+			width: 100%;
 
-			.btn {
-
-				&:hover {
-					cursor: pointer;
-				}
-			}
-		}
-
-		.question-content {
-			text-align: center;
-
-			h4 {
-
-			}
-
-			#question-box-dropdown {
-				width: 100%;
-
-				&:hover {
-					cursor: pointer;
-				}
+			&:hover {
+				cursor: pointer;
 			}
 		}
 	}
+}
 
-	.active-question {
-		border-style: solid;
-		border-color: green;
-	}
+.active-question {
+	border-style: solid;
+	border-color: green;
 }

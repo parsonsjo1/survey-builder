@@ -1,7 +1,7 @@
 <style>
- #survey-title-box {
- 	background-color: <%= @survey.color %>;
- }
+  #survey-title-box {
+ 	  background-color: <%= @survey.color %>;
+  }
 </style>
 
 <div class="container-fluid fill">
@@ -9,6 +9,7 @@
 
 		<div class="col-8 offset-1" id="survey">
 
+      <!-- Survey title box and title -->
 			<div class="row no-gutters align-items-center" id="survey-title-box">
 					<div class="col-4 offset-1">
 						<h1 id="survey-title" ><%= @survey.title %></h1>
@@ -16,14 +17,17 @@
 			</div>
 
 			
-
+      <!-- Survey body and questions -->
 			<div class="row no-gutters align-items-center" id="survey-questions">
-				<%= render partial: "questions" %>
-				<%= render partial: "new_question" %>
+				<%= render partial: "questions/question", collection: @survey.questions %>
+			</div>
+			<div class="row no-gutters align-items-center" id="new-question">
+				<%= render partial: "questions/new_question", locals: {survey: @survey} %>
 			</div>
 
 		</div>
 
+    <!-- Sidebar -->
 		<div class="col-3" id="sidebar">
 			<div class="row no-gutters align-items-center" id="sidebar-question-title">
 				<div class="col-12">

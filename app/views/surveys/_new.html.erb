@@ -1,0 +1,11 @@
+
+<%= form_for(@survey, url: { action: "create", remote: true }) do |f| %>
+	<div class="form-group row">
+		<div class="col-6">
+			<%= f.text_field(:title, {class: 'form-control', placeholder: 'Survey Title', value: 'New Survey'}) %>
+		</div>
+		<div class="col-6">
+			<%= f.submit("Add New Survey", {class: 'btn btn-primary'}) %>
+		</div>
+	</div>
+<% end %>
