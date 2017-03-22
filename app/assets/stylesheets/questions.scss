@@ -65,8 +65,10 @@
 	.question-content {
 		text-align: center;
 
-		h4 {
-
+		#freeresponse-textarea {
+			width: 100%;
+			border-radius: 5px;
+			max-height: 200px;
 		}
 
 		#question-box-dropdown {

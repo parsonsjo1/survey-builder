@@ -1,0 +1,6 @@
+<div class="col-10 offset-1">
+  <div class="row">
+    <!-- If question allows multiple answers use checkbox else use radio buttons -->
+    <%= render partial: 'questions/choice', collection: question.choices %>
+  </div>
+</div>

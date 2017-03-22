@@ -8,15 +8,10 @@
       <%= link_to "X" , { controller: 'questions', action: 'destroy', id: question.id }, { class: 'btn btn-danger delete-question-button', method: 'delete', remote: true } %>
 		</div>
 	</div>
-	<div class="row fill align-items-center">
+	<div class="row fill-height align-items-center">
 		<div class="col-12 question-content">
-		 	<% if(question.question_type == "Multiple Choice") %>
-		      <%= render partial: 'questions/multiple_choice', locals: { question: question } %>
-			<% elsif(question.question_type == "Free Response") %>
-		      <%= render partial: 'questions/free_response', locals: { question: question } %>
-		  <% elsif(question.question_type == "Dropdown") %>
-		      <%= render partial: 'questions/dropdown', locals: { question: question } %>
-			<% end %>
+			<%= render partial: 'questions/' + question.question_type.gsub(' ', '_').downcase, locals: { question: question } if question.question_type != "" %>
+
 		</div>
 	</div>
 </div>

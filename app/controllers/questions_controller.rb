@@ -54,7 +54,7 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       #format.json {sidebar: render_to_string partial: 'sidebar/dropdown', question_box: render_to_string partial: 'questions/dropdown'} 
       format.json { render json: @question }
-      format.html { render partial: 'sidebar/dropdown', locals: { question: @question } }
+      format.html { render partial: 'sidebar/' + @question.question_type.gsub(' ', '_').downcase, locals: { question: @question } }
     end
 
   end

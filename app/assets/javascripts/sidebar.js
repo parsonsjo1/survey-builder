@@ -61,7 +61,7 @@ var updateQuestionType = function(surveyId, questionId, questionType) {
 		dataType: "html"
 	}).success(function(sidebarContent) {
 			console.log("success question type updated");
-			console.log(sidebarContent);
+			//console.log(sidebarContent);
 			$('#question-type-content').empty();
 			$('#question-type-content').append(sidebarContent);
 
