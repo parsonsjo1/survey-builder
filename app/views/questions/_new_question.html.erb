@@ -1,9 +1,5 @@
 <div class="col-8 offset-2 new-question-box" id="add-new-question-box">
 	<div class="col-6 offset-3" id="new-question">
-	<!-- Clean up comments after commit -->
-<!-- 		<button class="btn btn-primary" id="add_new_question_button" type="button">Add New Question</button> -->
-<!-- 		 link_to "Add New Question", survey_questions_path(@survey.id, { question: { survey_id: @survey.id, title: "Question Title", is_required: false, question_type: "" }}), {method: :post, class: 'btn btn-primary'} %> -->
-		<!-- Not using button_to because it creates a form that I cannot style how I want to using btn -->
 		<%= link_to "Add New Question" , { controller: 'questions', action: 'create', question: {survey_id: survey.id, title: "New Question", is_required: false, question_type: "" }}, { class: 'btn btn-primary', method: 'post', remote: true } %>
 	</div>
 </div>

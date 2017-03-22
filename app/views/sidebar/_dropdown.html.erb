@@ -1,6 +1,8 @@
-<div class="col-12 question-<%= question.id %>" id="sidebar-choice-list">
-	<%= render partial: 'sidebar/choice_list', locals: {question: question} %>
+<div class="col-10 offset-1 question-<%= question.id %>" id="sidebar-choice-list">
+	<%= render partial: 'sidebar/choice', collection: question.choices %>
 	<!-- Add button to add choice values -->
-	<button class="btn btn-warning" id="add-new-choice-button" type="button">Add Choice</button>
+<!-- 	<button class="btn btn-warning" id="add-new-choice-button" type="button">Add Choice</button> -->
+<!--   <= link_to "Add Choice", { controller: "choices", action: "create", choice: { value: "New Choice" } }, { class: "btn btn-warning", id: "add-new-choice-button", method: "post", remote: true}  %> -->
+  <%= link_to "Add Choice", { controller: "choices", action: "create", survey_id: question.survey_id, question_id: question.id, choice: { answer_id: nil, question_id: question.id, value: "New Choice" } }, { class: "btn btn-warning", id: "add-new-choice-button", method: "post", remote: true }  %>
 </div>
 

@@ -2,7 +2,7 @@
 // Edit survey title by changing element to input
 $('#survey-title-box').on('click', '#survey-title', function() {
 	$isEditable = $('#survey-title').is('input');
-	//console.log($isEditable);
+
 	if(!$isEditable) {
 		$('#survey-title').replaceWith('<input id="survey-title" value="' + $('#survey-title').text() + '">' + '</input>');
 		$('#survey-title').focus().val($('#survey-title').val());
@@ -15,13 +15,9 @@ $('#survey-title-box').on('blur', '#survey-title', function(event) {
 	$('#survey-title').replaceWith('<h1 id="survey-title">' + $('#survey-title').val() + '</h1>');
 
 	//Update survey title
-	//console.log(event.currentTarget.baseURI);
 	let baseUri = event.currentTarget.baseURI;
 	let userId = getUserId(baseUri);
 	let surveyId = getSurveyId(baseUri);
-
-	//console.log(userId);
-	//console.log(surveyId);W
 	updateSurveyTitle(userId, surveyId, $('#survey-title').text());
 
 });
@@ -45,8 +41,7 @@ var getUserId = function(baseUri) {
 var updateSurveyTitle = function(userId, surveyId, newSurveyTitle) {
 	console.log("Update survey title " + newSurveyTitle);
 	let dataToSend = { id: surveyId, user_id: userId, survey: { title: newSurveyTitle }};
-	//console.log('/users/' + userId + '/surveys/' + surveyId);
-	//console.log(dataToSend);
+
 	$.ajax({
 		url: '/users/' + userId + '/surveys/' + surveyId, 
 		method: "PUT",

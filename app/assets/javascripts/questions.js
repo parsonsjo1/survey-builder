@@ -9,45 +9,47 @@
 
 // });
 
-// Delete a question on click
+//Delete a question on click
 // $('#survey-questions').on('click', '.delete-question-button', function(event) {
-// 	event.stopPropagation();
-// 	//console.log(event.currentTarget.closest('.question-box').id);
-// 	// Delete question from the server
-// 	let baseUri = event.currentTarget.baseURI;
-// 	let surveyId = getSurveyId(baseUri);
-// 	let questionId = event.currentTarget.closest('.question-box').id;
-// 	deleteQuestion(surveyId, questionId);
+	//event.stopPropagation();
+	//console.log(event.currentTarget.closest('.question-box').id);
+	// Delete question from the server
+	// let baseUri = event.currentTarget.baseURI;
+	// let surveyId = getSurveyId(baseUri);
+	// let questionId = event.currentTarget.closest('.question-box').id;
+	// deleteQuestion(surveyId, questionId);
 
 // });
 
-// Activate and/or update sidebar
-$('#survey-questions').on('click', '#question-box', function(event) {
-	event.stopPropagation();
+//Activate and/or update sidebar
+$('#survey-questions').on('click', '.question-box', function(event) {
 	let className = event.currentTarget.className;
 	let questionId = event.currentTarget.id;
+	let question = questionId.split("-")[1];
 
 	// Remove previous active question and update new active question
 	$('.question-box').removeClass('active-question');
 	$('#' + questionId).addClass('active-question');
 
 	// Update sidebar with question number
-	console.log('clicked question box id ' + questionId + ' number ' + getSequenceNumber(className));
-	updateSidebarTitle(getSequenceNumber(className));
+	console.log('clicked ' + questionId + ' number ' + question);
+	updateSidebarTitle(question);
 
 	let baseUri = event.currentTarget.baseURI;
 	let surveyId = getSurveyId(baseUri);
-	updateSidebarContent(surveyId, questionId);
+	updateSidebarContent(surveyId, question);
 });
 
 // Edit question title by changing element to input
-$('.question-box').on('click', '.question-title', function(event) {
+$('#survey-questions').on('click', '.question-title', function(event) {
 	event.stopPropagation();
-	//console.log('clicked question title');
+	console.log('clicked question title');
 	id = event.currentTarget.closest('.question-box').id;
+	console.log(id);
 	questionTitleElement = $('#' + id).find('h3').first();
+	console.log(questionTitleElement);
 	$isEditable = questionTitleElement.is('input');
-	//console.log($isEditable);
+	console.log($isEditable);
 	if(!$isEditable) {
 		questionTitleElement.replaceWith('<input value="' + questionTitleElement.text() + '">' + '</input>');
 		questionTitleElement = $('#' + id).find('input').first();
@@ -56,7 +58,7 @@ $('.question-box').on('click', '.question-title', function(event) {
 });
 
 // If question title loses focus
-$('.question-box').on('blur', '.question-title', function(event) {
+$('#survey-questions').on('blur', '.question-title', function(event) {
 	//console.log('question blur');
 	id = event.currentTarget.closest('.question-box').id;
 	questionTitleElement = $('#' + id).find('input').first();
@@ -68,8 +70,8 @@ $('.question-box').on('blur', '.question-title', function(event) {
 	let baseUri = event.currentTarget.baseURI;
 	let surveyId = getSurveyId(baseUri);
 
-	//console.log(surveyId);
-	updateQuestionTitle(surveyId, id, questionTitleElement.val());
+	//console.log(id.split("-")[1]);
+	updateQuestionTitle(surveyId, id.split("-")[1], questionTitleElement.val());
 
 });
 
@@ -112,16 +114,16 @@ $('.question-box').on('blur', '.question-title', function(event) {
 // 	});
 // }
 
-var getSequenceNumber = function(className) {
-	let questionRegex = /sequence-([0-9]+)/;
-	let questionMatch = questionRegex.exec(className);
-	if(questionMatch) {
-		return questionMatch[1];
-	}
-	else {
-		console.log(questionMatch)
-	}
-}
+// var getSequenceNumber = function(className) {
+// 	let questionRegex = /sequence-([0-9]+)/;
+// 	let questionMatch = questionRegex.exec(className);
+// 	if(questionMatch) {
+// 		return questionMatch[1];
+// 	}
+// 	else {
+// 		console.log(questionMatch)
+// 	}
+// }
 
 var getSurveyId = function(baseUri) {
 	let surveyRegex = /surveys\/([0-9]+)/;
@@ -133,7 +135,7 @@ var getSurveyId = function(baseUri) {
 var updateQuestionTitle = function(surveyId, questionId, newQuestionTitle) {
 	//console.log("Update question title " + newQuestionTitle);
 	let dataToSend = { id: questionId, question: { title: newQuestionTitle }};
-	//console.log('/users/' + userId + '/surveys/' + surveyId);
+	//console.log('/surveys/' + surveyId + '/questions/' + questionId);
 	//console.log(dataToSend);
 	$.ajax({
 		url: '/surveys/' + surveyId + '/questions/' + questionId, 

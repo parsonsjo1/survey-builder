@@ -9,7 +9,7 @@ $('#sidebar').on('click', '#question-required', function(event) {
 		let surveyId = getSurveyId(baseUri);
 		let questionId = $('.active-question')["0"].id;
 		let questionRequired = event.currentTarget.checked;
-		updateQuestionRequired(surveyId, questionId, questionRequired);
+		updateQuestionRequired(surveyId, questionId.split("-")[1], questionRequired);
 	}
 });
 
@@ -24,7 +24,7 @@ $('#sidebar').on('click', '#question-type', function(event) {
 		let questionId = $('.active-question')["0"].id;
 		let questionTypeIndex = event.currentTarget.options.selectedIndex;
 		let questionType = event.currentTarget.options[questionTypeIndex].text;
-		updateQuestionType(surveyId, questionId, questionType);
+		updateQuestionType(surveyId, questionId.split("-")[1], questionType);
 	}
 });
 
@@ -62,8 +62,8 @@ var updateQuestionType = function(surveyId, questionId, questionType) {
 	}).success(function(sidebarContent) {
 			console.log("success question type updated");
 			console.log(sidebarContent);
-			$('#question-type-content').remove();
-			$('#question-type').after(sidebarContent);
+			$('#question-type-content').empty();
+			$('#question-type-content').append(sidebarContent);
 
 	}).error(function(error) {
 			console.log("error question type");

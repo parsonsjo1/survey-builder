@@ -1,13 +1,76 @@
 
 <div class="row no-gutters align-items-center" id="sidebar-question-content">
-	<div class="col-11 offset-1" id="required-row">
+
+	<!-- Question Content -->
+	<div class="col-12">
+
+		<div class="row" id="required-row">
+			<div class="col-6 offset-1">Required:</div>
+			<div class="col-4" id="checkbox-column">
+				<label class="custom-control custom-checkbox">
+					<% if question.is_required == false %>
+				  	<input type="checkbox" class="custom-control-input" id="question-required">
+					<% else %>
+				  	<input type="checkbox" class="custom-control-input" id="question-required" checked>
+				  <% end %>
+				  <span class="custom-control-indicator"></span>
+				</label>
+			</div>
+		</div>
+
+		<div class="row" id="type-row">
+			<div class="col-4 offset-1">Type:</div>
+			<div class="col-6">
+				<select class="custom-select" id="question-type">
+					<% if question.question_type == "" %>
+				  	<option value="0" selected></option>
+				  <% else %>
+				  	<option value="0"></option>
+				  <% end %>
+				  <% if question.question_type == "Multiple Choice" %>
+				  	<option value="1" selected>Multiple Choice</option>
+				  <% else %>
+					  <option value="1">Multiple Choice</option>
+				  <% end %>
+				  <% if question.question_type == "Free Response" %>
+					  <option value="2" selected>Free Response</option>
+				  <% else %>
+					  <option value="2">Free Response</option>
+				  <% end %>
+				  <% if question.question_type == "Dropdown" %>
+					  <option value="2" selected>Dropdown</option>
+				  <% else %>
+					  <option value="2">Dropdown</option>
+				  <% end %>
+				</select>
+			</div>
+
+			<div class="row fill-width" id="question-type-content">
+			 	<% if(question.question_type == "Multiple Choice") %>
+			      <%= render partial: 'sidebar/multiple_choice', locals: { question: question } %>
+				<% elsif(question.question_type == "Free Response") %>
+			      <%= render partial: 'sidebar/free_response', locals: { question: question } %>
+			  <% elsif(question.question_type == "Dropdown") %>
+			      <%= render partial: 'sidebar/dropdown', locals: { question: question } %>
+				<% end %>
+			</div>
+	</div>
+
+	<!-- Question Logic -->
+	<div class="col-12">
+
+	</div>
+</div>
+
+
+<!-- 	<div class="col-10 offset-1" id="required-row">
 		<span>Required:</span>
 		<label class="custom-control custom-checkbox">
-			<% if question.is_required == false %>
+			< if question.is_required == false %>
 		  	<input type="checkbox" class="custom-control-input" id="question-required">
-			<% else %>
+			< else %>
 		  	<input type="checkbox" class="custom-control-input" id="question-required" checked>
-		  <% end %>
+		  < end %>
 		  <span class="custom-control-indicator"></span>
 		</label>
 	</div>
@@ -15,37 +78,37 @@
 	<div class="col-11 offset-1" id="type-row">
 		<span>Type:</span>
 		<select class="custom-select" id="question-type">
-			<% if question.question_type == "" %>
+			< if question.question_type == "" %>
 		  	<option value="0" selected></option>
-		  <% else %>
+		  < else %>
 		  	<option value="0"></option>
-		  <% end %>
-		  <% if question.question_type == "Multiple Choice" %>
+		  < end %>
+		  < if question.question_type == "Multiple Choice" %>
 		  	<option value="1" selected>Multiple Choice</option>
-		  <% else %>
+		  < else %>
 			  <option value="1">Multiple Choice</option>
-		  <% end %>
-		  <% if question.question_type == "Free Response" %>
+		  < end %>
+		  < if question.question_type == "Free Response" %>
 			  <option value="2" selected>Free Response</option>
-		  <% else %>
+		  < else %>
 			  <option value="2">Free Response</option>
-		  <% end %>
-		  <% if question.question_type == "Dropdown" %>
+		  < end %>
+		  < if question.question_type == "Dropdown" %>
 			  <option value="2" selected>Dropdown</option>
-		  <% else %>
+		  < else %>
 			  <option value="2">Dropdown</option>
-		  <% end %>
+		  < end %>
 		</select>
 
 		<div class="row no-gutters" id="question-type-content">
-		 	<% if(question.question_type == "Multiple Choice") %>
-		      <%= render partial: 'sidebar/multiple_choice', locals: { question: question } %>
-			<% elsif(question.question_type == "Free Response") %>
-		      <%= render partial: 'sidebar/free_response', locals: { question: question } %>
-		  <% elsif(question.question_type == "Dropdown") %>
-		      <%= render partial: 'sidebar/dropdown', locals: { question: question } %>
-			<% end %>
+		 	< if(question.question_type == "Multiple Choice") %>
+		      <= render partial: 'sidebar/multiple_choice', locals: { question: question } %>
+			< elsif(question.question_type == "Free Response") %>
+		      <= render partial: 'sidebar/free_response', locals: { question: question } %>
+		  < elsif(question.question_type == "Dropdown") %>
+		      <= render partial: 'sidebar/dropdown', locals: { question: question } %>
+			< end %>
 		</div>
 	</div>
 
-</div>
+</div> -->

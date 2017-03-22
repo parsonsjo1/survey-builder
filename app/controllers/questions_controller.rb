@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  
   def index
     @questions = Question.all
     render json: sequence
@@ -13,11 +13,10 @@ class QuestionsController < ApplicationController
 
   def create
 
-    @question = Question.new(question_params)
+    @question = Question.create(question_params)
     #@question = Question.new(survey_id: 21, title: "New Question", is_required: false, question_type: "")
 
     respond_to do |format|
-      if @question.save
 
         # questions = Question.where(survey_id: params[@question.survey_id])
 
@@ -29,10 +28,8 @@ class QuestionsController < ApplicationController
         #format.html { render partial: 'questions/question_box', locals: {question: @question, sequence: sequence} }
         format.js {}
         #format.json { render json: @question, status: :created, location: @question }
-      else
         #format.html { render action: 'new' }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
-      end
+        #format.json { render json: @question.errors, status: :unprocessable_entity }
     end
 
   end
@@ -56,6 +53,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       #format.json {sidebar: render_to_string partial: 'sidebar/dropdown', question_box: render_to_string partial: 'questions/dropdown'} 
+      format.json { render json: @question }
       format.html { render partial: 'sidebar/dropdown', locals: { question: @question } }
     end
 
@@ -64,19 +62,16 @@ class QuestionsController < ApplicationController
   def destroy
 
     @question = Question.find(params[:id])
-    #@question.destroy
+    @question.destroy
     #redirect_to edit_user_survey_path(current_user.id, params[:survey_id])
     
     # http://guides.rubyonrails.org/working_with_javascript_in_rails.html
     respond_to do |format|
-      if @question.destroy
         #format.html {}
         format.js {}
         #format.json {}
-      else
         #format.html { }
         #format.json { render json: @question.errors, status: :unprocessable_entity }
-      end
     end
   end
 

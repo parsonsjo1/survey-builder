@@ -12,18 +12,18 @@ class SurveysController < ApplicationController
 
   def create
 
-    @survey = Survey.new(user_id: current_user.id, title: params[:survey][:title], color: "#CBE068", token: SecureRandom.uuid, is_active: false)
+    @survey = Survey.create(user_id: current_user.id, title: params[:survey][:title], color: "#CBE068", token: SecureRandom.uuid, is_active: false)
     #redirect_to user_surveys_path(current_user.id)
     #http://guides.rubyonrails.org/working_with_javascript_in_rails.html
     respond_to do |format|
-      if @survey.save
-        format.html { redirect_to user_surveys_path(current_user.id) }
-        format.js {}
-        format.json { render json: @survey, status: :created, location: @survey }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @survey.errors, status: :unprocessable_entity }
-      end 
+
+      format.html { redirect_to user_surveys_path(current_user.id) }
+      format.js {}
+      format.json { render json: @survey, status: :created, location: @survey }
+
+      # format.html { render action: 'new' }
+      # format.json { render json: @survey.errors, status: :unprocessable_entity }
+
     end
 
   end
@@ -32,12 +32,24 @@ class SurveysController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
 
     @survey.update(survey_params)
-    render json: @survey
+
+    #http://guides.rubyonrails.org/working_with_javascript_in_rails.html
+    respond_to do |format|
+
+      format.html { redirect_to user_surveys_path(current_user.id) }
+      format.js {}
+      format.json { render json: @survey, status: :created, location: @survey }
+
+      # format.html { render action: 'new' }
+      # format.json { render json: @survey.errors, status: :unprocessable_entity }
+
+    end
 
   end
 
