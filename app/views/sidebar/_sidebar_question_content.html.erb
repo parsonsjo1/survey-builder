@@ -57,7 +57,7 @@
 		</div>
 
 		<!-- Question Logic -->
-		<div class="row fill-width" id="question-logic">
+		<div class="row fill-width question-logic" id="question-logic-<%= question.id %>">
 			<%= render partial: 'sidebar/logic/logic', locals: { question: question, questions: questions } if question.question_type != "" %>
 		</div>
 	</div>

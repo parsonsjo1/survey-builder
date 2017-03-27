@@ -43,6 +43,7 @@ class QuestionsController < ApplicationController
 
     @question = Question.find(params[:id])
     @question.update(question_params)
+    @questions = Question.where(survey_id: @question.survey_id)
 
     respond_to do |format|
       format.js {}

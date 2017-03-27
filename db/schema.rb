@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327162415) do
+ActiveRecord::Schema.define(version: 20170327190638) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "response_id", null: false
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 20170327162415) do
     t.datetime "updated_at",  null: false
     t.index ["answer_id"], name: "index_choices_on_answer_id", using: :btree
     t.index ["question_id"], name: "index_choices_on_question_id", using: :btree
+  end
+
+  create_table "logics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "question_id"
+    t.integer  "if_choice_id"
+    t.integer  "show_question_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["question_id"], name: "index_logics_on_question_id", using: :btree
   end
 
   create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -72,6 +81,7 @@ ActiveRecord::Schema.define(version: 20170327162415) do
   add_foreign_key "answers", "responses"
   add_foreign_key "choices", "answers"
   add_foreign_key "choices", "questions"
+  add_foreign_key "logics", "questions"
   add_foreign_key "questions", "surveys"
   add_foreign_key "responses", "surveys"
   add_foreign_key "responses", "users"

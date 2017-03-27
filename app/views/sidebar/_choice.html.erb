@@ -1,6 +1,4 @@
 <div class="input-group" id="sidebar-choice-<%= choice.id %>">
-    <!-- <input class="choice" type="text" name="" value="<%= choice.value %>"> -->
     <div class="choice" ><%= choice.value %></div>
-   <!--  <button class="btn btn-danger delete-choice-button" >X</button> -->
     <%= link_to "X" , { controller: 'choices', action: 'destroy', question_id: choice.question_id, id: choice.id }, { class: 'btn btn-danger delete-choice-button', method: 'delete', remote: true } %>
 </div>

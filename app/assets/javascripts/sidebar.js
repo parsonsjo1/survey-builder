@@ -46,6 +46,7 @@ $('#sidebar').on('click', '#question-allow-multiple-answers', function(event) {
 
 var updateAllowMultipleAnswers = function(surveyId, questionId, allowMultipleAnswers) {
 	$('#question-type-content').empty();
+	$('.question-logic').empty();
 	$('#question-' + questionId).find('.question-content').first().empty();
 	let dataToSend = { question: { allow_multiple_answers: allowMultipleAnswers }};
 
@@ -83,12 +84,13 @@ var updateQuestionRequired = function(surveyId, questionId, questionRequired) {
 
 var updateQuestionType = function(surveyId, questionId, questionType) {
 
-	// Clear the question box content and sidebar content
+	// Clear the question box content and sidebar content and question logic
 	$('#question-type-content').empty();
+	$('.question-logic').empty();
 	$('#question-' + questionId).find('.question-content').first().empty();
 
 	// Add sidebar type content and question content if question type is not empty
-	if (questionType !== "") {
+	if (questionType !== "Free Response" && questionType !== "Mutliple Choice") {
 
 		let dataToSend = { question: { question_type: questionType }};
 

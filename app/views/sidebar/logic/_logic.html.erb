@@ -4,18 +4,16 @@
     <div class="col-12" id="question-logic-title">Question Logic</div>
   </div>
 
-  <div class="row" id="question-logic-choice">
-    <!-- Choice -->
-    <% if question.allow_multiple_answers == true && question.question_type == "Multiple Choice"%>
-      <div class="col-12" id="logic-dropdown-label">
-        <div>If choices:</div>
-      </div>    
-      <% question.choices.each do |choice| %>
-        <div class="col-4" style="text-align: center;">
-          <input class="form-check-input" type="checkbox" ><%= choice.value %>
-        </div>
-      <% end %>
-    <% else %>
+  <!-- Choice -->
+  <% if question.allow_multiple_answers == true and question.question_type == "Multiple Choice"%>
+    <div class="row" id="logic-dropdown-label">
+      <div class="col-12">If choices:</div>
+    </div>
+    <div class="row multiple-choice-list">  
+      <%= render partial: 'questions/choice', collection: question.choices, locals: { question: question } %> 
+    </div>
+  <% else %>
+    <div class="row">
       <div class="col-4" id="logic-dropdown-label">
         <div>If choice:</div>
       </div>    
@@ -26,8 +24,8 @@
           <% end %>
         </select>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
   <div class="row" id="question-logic-selection">
     <!-- Show Questions -->

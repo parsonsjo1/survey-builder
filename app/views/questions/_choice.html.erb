@@ -1,8 +1,8 @@
-<div class="col-4" id="choice-<%= choice.id.to_s %>">
+<div class="col-4 choice-<%= choice.id.to_s %>">
   <div class="form-check form-check-inline">
     <label class="form-check-label">
       <% if question.allow_multiple_answers == true %>
-        <input class="form-check-input" type="checkbox" id="checkbox-choice-<%=choice.id%>">
+        <input class="form-check-input checkbox-choice-<%=choice.id%>" type="checkbox">
         <label for="checkbox-choice-<%=choice.id%>"><%=choice.value%></label>
       <% else %>
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radio-choice-<%=choice.id%>">

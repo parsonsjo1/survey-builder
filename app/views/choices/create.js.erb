@@ -1,3 +1,6 @@
 $("#add-new-choice-button").before("<%= j(render partial: './sidebar/choice', locals: {choice: @choice}) %>");
 $("#question-<%= j(@question.id.to_s) %>").find('.multiple-choice-list').first().append("<%= j(render partial: './questions/choice', locals: {question: @question, choice: @choice}) %>");
 $("#question-<%= j(@question.id.to_s) %>").find('.question-box-dropdown').first().append("<%= j(render partial: './questions/dropdown_choice', locals: {choice: @choice}) %>");
+
+$("#question-logic-<%= j(@question.id.to_s) %>").find('.multiple-choice-list').first().append("<%= j(render partial: './questions/choice', locals: {question: @question, choice: @choice}) %>");
+$("#question-logic-<%= j(@question.id.to_s) %>").find('.question-logic-dropdown').first().append("<%= j(render partial: './questions/dropdown_choice', locals: {choice: @choice}) %>");
