@@ -1,3 +1,4 @@
+//TODO: Attach survey id to survey page and get it from that instead of the url
 
 // Edit survey title by changing element to input
 $('#survey-title-box').on('click', '#survey-title', function() {

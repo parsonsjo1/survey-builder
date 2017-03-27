@@ -1,8 +1,10 @@
+// TODO: Attach survey id to the survey as an id and use that instead of the url
+//			 Implement Multiple Selection Checkbox Update
+//			 Refactor sidebar update on question selection
 
 // Update question required
 $('#sidebar').on('click', '#question-required', function(event) {
-	//console.log($('.active-question').length);
-	//console.log(event);
+
 	// If there is an active question selected then update it's required
 	if($('.active-question').length > 0) {
 		let baseUri = event.currentTarget.baseURI;
@@ -15,7 +17,6 @@ $('#sidebar').on('click', '#question-required', function(event) {
 
 // Update question type
 $('#sidebar').on('click', '#question-type', function(event) {
-	//console.log($('.active-question').length);
 
 	// If there is an active question selected then update it's type
 	if($('.active-question').length > 0) {
@@ -27,6 +28,8 @@ $('#sidebar').on('click', '#question-type', function(event) {
 		updateQuestionType(surveyId, questionId.split("-")[1], questionType);
 	}
 });
+
+// Update multiple selection
 
 // Functions in alphabetical order
 
@@ -42,33 +45,38 @@ var updateQuestionRequired = function(surveyId, questionId, questionRequired) {
 		dataType: "html"
 	}).success(function(questionTypeHtml) {
 			console.log("success question required updated");
-			// Update html in sidebar according to question type
-			//$('#add-new-question-box').before(questionBoxHtml);
 	}).error(function(error) {
-			console.log("error add");
+			console.log("error updating question required");
 			console.log(error);
 	});
 }
 
 var updateQuestionType = function(surveyId, questionId, questionType) {
 
-	let dataToSend = { question: { question_type: questionType }};
+	// Clear the question box content and sidebar content
+	$('#question-type-content').empty();
+	$('#question-' + questionId).find('.question-content').first().empty();
 
-	$.ajax({
-		url: '/surveys/' + surveyId + '/questions/' + questionId, 
-		method: "PUT",
-		data: dataToSend,
-		dataType: "html"
-	}).success(function(sidebarContent) {
-			console.log("success question type updated");
-			//console.log(sidebarContent);
-			$('#question-type-content').empty();
-			$('#question-type-content').append(sidebarContent);
+	// Add sidebar type content and question content if question type is not empty
+	if (questionType !== "") {
 
-	}).error(function(error) {
-			console.log("error question type");
-			console.log(error);
-	});
+		let dataToSend = { question: { question_type: questionType }};
+
+		// Update Question Type
+		$.ajax({
+			url: '/surveys/' + surveyId + '/questions/' + questionId, 
+			method: "PUT",
+			data: dataToSend,
+			dataType: "script"
+		}).success(function(data) {
+				console.log("success question type updated");
+				//console.log(data);
+		}).error(function(error) {
+				console.log("error question type");
+				//console.log(error);
+		});
+	}
+
 }
 
 // Send get request for generated html to append to sidebar

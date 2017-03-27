@@ -12,12 +12,7 @@ class ChoicesController < ApplicationController
 
     respond_to do |format|
       #http://guides.rubyonrails.org/working_with_javascript_in_rails.html
-      #format.html { }
-      #format.js {render js: "alert('Hello Rails ');" and return}
       format.js {}
-      #format.json { render json: @choice, status: :created, location: @choice }
-      #format.html { render action: 'new' }
-      #format.json { render json: @choice.errors, status: :unprocessable_entity }
     end
   end
 
@@ -33,9 +28,7 @@ class ChoicesController < ApplicationController
     @choice.update(choice_params)
 
     respond_to do |format|
-      #format.xml { render xml: @question.to_xml }
       format.json { render json: @choice.to_json }
-      #format.html { render partial: 'sidebar/choice', locals: { choice: @choice, i: -1 } }
     end
 
   end

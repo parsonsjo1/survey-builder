@@ -52,9 +52,7 @@ class QuestionsController < ApplicationController
     @question.update(question_params)
 
     respond_to do |format|
-      #format.json {sidebar: render_to_string partial: 'sidebar/dropdown', question_box: render_to_string partial: 'questions/dropdown'} 
-      format.json { render json: @question }
-      format.html { render partial: 'sidebar/' + @question.question_type.gsub(' ', '_').downcase, locals: { question: @question } }
+      format.js {}
     end
 
   end
@@ -67,11 +65,7 @@ class QuestionsController < ApplicationController
     
     # http://guides.rubyonrails.org/working_with_javascript_in_rails.html
     respond_to do |format|
-        #format.html {}
         format.js {}
-        #format.json {}
-        #format.html { }
-        #format.json { render json: @question.errors, status: :unprocessable_entity }
     end
   end
 
