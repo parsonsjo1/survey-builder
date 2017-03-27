@@ -1,8 +1,20 @@
 <div class="col-10 offset-1 question-<%= question.id %>" id="sidebar-choice-list">
+  <div class="row">
+    <div class="col-8">Allow Multiple Answers:</div>
+    <div class="col-4 checkbox-column">
+      <label class="custom-control custom-checkbox">
+        <% if question.allow_multiple_answers == false %>
+          <input type="checkbox" class="custom-control-input" id="question-allow-multiple-answers">
+        <% else %>
+          <input type="checkbox" class="custom-control-input" id="question-allow-multiple-answers" checked>
+        <% end %>
+        <span class="custom-control-indicator"></span>
+      </label>
+    </div>
+  </div>
+
   <%= render partial: 'sidebar/choice', collection: question.choices %>
-  <!-- Add button to add choice values -->
-<!--  <button class="btn btn-warning" id="add-new-choice-button" type="button">Add Choice</button> -->
-<!--   <= link_to "Add Choice", { controller: "choices", action: "create", choice: { value: "New Choice" } }, { class: "btn btn-warning", id: "add-new-choice-button", method: "post", remote: true}  %> -->
+
   <%= link_to "Add Choice", { controller: "choices", action: "create", survey_id: question.survey_id, question_id: question.id, choice: { answer_id: nil, question_id: question.id, value: "New Choice" } }, { class: "btn btn-warning", id: "add-new-choice-button", method: "post", remote: true }  %>
 </div>
 

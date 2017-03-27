@@ -25,11 +25,7 @@ class QuestionsController < ApplicationController
         #sequence = question_index + 1
 
         #http://guides.rubyonrails.org/working_with_javascript_in_rails.html
-        #format.html { render partial: 'questions/question_box', locals: {question: @question, sequence: sequence} }
         format.js {}
-        #format.json { render json: @question, status: :created, location: @question }
-        #format.html { render action: 'new' }
-        #format.json { render json: @question.errors, status: :unprocessable_entity }
     end
 
   end
@@ -53,6 +49,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       format.js {}
+      format.json { render json: @question.to_json}
     end
 
   end
@@ -71,7 +68,7 @@ class QuestionsController < ApplicationController
 
   private
     def question_params
-      params.require(:question).permit(:survey_id, :title, :is_required, :question_type)
+      params.require(:question).permit(:survey_id, :title, :is_required, :allow_multiple_answers, :question_type)
     end
 
 end

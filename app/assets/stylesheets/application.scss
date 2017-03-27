@@ -35,6 +35,19 @@ html {
 	}
 }
 
+.checkbox-column {
+	text-align: right;
+
+	.custom-checkbox {
+		margin-right: 0;
+
+		.custom-control-indicator {
+			width: 1.5rem;
+			height: 1.5rem;
+		}	
+	}
+}
+
 .container-fluid {
 	padding: 0;
 }

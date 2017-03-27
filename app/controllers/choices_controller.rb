@@ -9,6 +9,7 @@ class ChoicesController < ApplicationController
 
   def create
     @choice = Choice.create(choice_params)
+    @question = Question.find(@choice.question_id)
 
     respond_to do |format|
       #http://guides.rubyonrails.org/working_with_javascript_in_rails.html
@@ -29,6 +30,7 @@ class ChoicesController < ApplicationController
 
     respond_to do |format|
       format.json { render json: @choice.to_json }
+      format.js {}
     end
 
   end

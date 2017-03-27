@@ -17,7 +17,7 @@ $('#sidebar').on('blur', '.choice', function(event) {
   $('#' + choiceId  + ' > input').replaceWith('<div class="choice">' + $('#' + choiceId + ' > input').val() + '</div>')
 
   //Update choice
-  updateChoice(choiceId.split("-")[1], $('#' + choiceId + ' > div').text());
+  updateChoice(choiceId.split("-")[2], $('#' + choiceId + ' > div').text());
 
 });
 
@@ -26,7 +26,7 @@ $('#sidebar').on('blur', '.choice', function(event) {
 
 //update survey title by calling controller with put method
 var updateChoice = function(choiceId, newValue) {
-  console.log("Update choice " + choiceId + " with" + newValue);
+  console.log("Update choice " + choiceId + " with " + newValue);
   questionId = $('.active-question').get(0).id.split("-")[1];
   let dataToSend = { id: choiceId, choice: { value: newValue }};
 
@@ -34,10 +34,10 @@ var updateChoice = function(choiceId, newValue) {
     url: '/questions/' + questionId + '/choices/' + choiceId, 
     method: "PUT",
     data: dataToSend,
-    dataType: "json"
-  }).success(function(data) {
+    dataType: "script"
+  }).success(function(response) {
       console.log("success");
-      console.log(data);
+      //console.log(data);
   }).error(function(error) {
       console.log("error");
       console.log(error);

@@ -30,8 +30,38 @@ $('#sidebar').on('click', '#question-type', function(event) {
 });
 
 // Update multiple selection
+$('#sidebar').on('click', '#question-allow-multiple-answers', function(event) {
+
+	// If there is an active question selected then update it's multi answers
+	if($('.active-question').length > 0) {
+		let baseUri = event.currentTarget.baseURI;
+		let surveyId = getSurveyId(baseUri);
+		let questionId = $('.active-question')["0"].id;
+		let allowMultipleAnswers = event.currentTarget.checked;
+		updateAllowMultipleAnswers(surveyId, questionId.split("-")[1], allowMultipleAnswers);
+	}
+});
 
 // Functions in alphabetical order
+
+var updateAllowMultipleAnswers = function(surveyId, questionId, allowMultipleAnswers) {
+	$('#question-type-content').empty();
+	$('#question-' + questionId).find('.question-content').first().empty();
+	let dataToSend = { question: { allow_multiple_answers: allowMultipleAnswers }};
+
+	$.ajax({
+		url: '/surveys/' + surveyId + '/questions/' + questionId, 
+		method: "PUT",
+		data: dataToSend,
+		dataType: "script"
+	}).success(function(response) {
+			console.log("success question multi answer updated");
+			//console.log(response);
+	}).error(function(error) {
+			console.log("error updating question multi answer");
+			console.log(error);
+	});
+}
 
 
 var updateQuestionRequired = function(surveyId, questionId, questionRequired) {
@@ -42,7 +72,7 @@ var updateQuestionRequired = function(surveyId, questionId, questionRequired) {
 		url: '/surveys/' + surveyId + '/questions/' + questionId, 
 		method: "PUT",
 		data: dataToSend,
-		dataType: "html"
+		dataType: "json"
 	}).success(function(questionTypeHtml) {
 			console.log("success question required updated");
 	}).error(function(error) {

@@ -21,19 +21,6 @@
 
 			margin-top: 10px;
 			margin-bottom: 10px;
-
-			#checkbox-column {
-				text-align: right;
-
-				.custom-checkbox {
-					margin-right: 0;
-
-					.custom-control-indicator {
-						width: 1.5rem;
-						height: 1.5rem;
-					}	
-				}
-			}
 		}
 
 		#type-row {
@@ -67,7 +54,7 @@
 
 					div .choice {
 						margin: auto 0;
-						padding: 5px;
+						padding: 5px 0;
 
 						&:hover {
 							border-style: solid;
