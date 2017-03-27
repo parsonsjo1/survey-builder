@@ -118,12 +118,8 @@ var updateSidebarContent = function(surveyId, questionId) {
 	$.ajax({
 		url: '/surveys/' + surveyId + '/questions/' + questionId, 
 		method: "GET",
-		dataType: "html"
-	}).success(function(sidebarHtml) {
-			//console.log(sidebarHtml);
-			// Append sidebarhtml underneath the question title
-			$('#sidebar-question-content').remove();
-			$('#sidebar-question-title').after(sidebarHtml);
+		dataType: "script"
+	}).success(function(response) {
 			console.log("success, attached sidebar question content");
 	}).error(function(error) {
 			console.log("sidebar content error");

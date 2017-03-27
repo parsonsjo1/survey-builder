@@ -24,6 +24,7 @@
 @import "surveys.scss";
 @import "users.scss";
 @import "sidebar.scss";
+@import "question_logic.scss";
 
 html {
 	height: 100%;
@@ -70,4 +71,12 @@ html {
 
 .fill-min {
 	min-height: 100%;
+}
+
+.highlight {
+	margin: auto auto;
+	&:hover {
+		border: solid gray thin;
+		cursor: pointer;
+	}
 }

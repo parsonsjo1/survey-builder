@@ -1,6 +1,6 @@
 	
 <div class="col-6 offset-3">
-	<select class="custom-select" id="question-box-dropdown">
+	<select class="custom-select question-box-dropdown">
     <!-- <= render partial: 'questions/dropdown_choice', collection: question.choices %> -->
 		<% question.choices.each_with_index do |choice, i| %>
 			<%= render partial: 'questions/dropdown_choice', locals: {choice: choice} %>

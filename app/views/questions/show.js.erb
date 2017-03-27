@@ -1,0 +1,2 @@
+$('#sidebar').empty();
+$('#sidebar').append('<%= j(render partial: "sidebar/sidebar_question_content", locals: { question: @question, questions: @questions })%>');

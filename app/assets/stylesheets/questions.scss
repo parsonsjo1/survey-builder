@@ -26,40 +26,11 @@
 
 	&:hover {
 		cursor: pointer;
-		background-color: gray;
-	}
-
-
-
-	.question-title {
-		padding: 5px 5px 0px 20px;
-
-		h3 {
-			display: inline;
-
-			&:hover {
-				cursor: pointer;
-				background-color: black;
-				color: white;
-			}
-		}
-		input {
-			width: 100%;
-			font-size: 1.75rem;
-		}
-
 	}
 
 	.question-delete {
 		text-align: center;
 		padding: 5px 10px 0px 0px;
-
-		.btn {
-
-			&:hover {
-				cursor: pointer;
-			}
-		}
 	}
 
 	.question-content {
@@ -71,7 +42,7 @@
 			max-height: 200px;
 		}
 
-		#question-box-dropdown {
+		.question-box-dropdown {
 			width: 100%;
 
 			&:hover {
@@ -79,9 +50,4 @@
 			}
 		}
 	}
-}
-
-.active-question {
-	border-style: solid;
-	border-color: green;
 }

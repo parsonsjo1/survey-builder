@@ -1,3 +1,9 @@
+<div class="row no-gutters align-items-center" id="sidebar-question-title">
+	<div class="col-12">
+		<!-- Dynamically change to active question number -->
+		<h1>Question <%= question.sequence %></h1>
+	</div>
+</div>
 
 <div class="row no-gutters align-items-center" id="sidebar-question-content">
 
@@ -46,18 +52,13 @@
 			</div>
 
 			<div class="row fill-width" id="question-type-content">
-			 	<% if(question.question_type == "Multiple Choice") %>
-			      <%= render partial: 'sidebar/multiple_choice', locals: { question: question } %>
-				<% elsif(question.question_type == "Free Response") %>
-			      <%= render partial: 'sidebar/free_response', locals: { question: question } %>
-			  <% elsif(question.question_type == "Dropdown") %>
-			      <%= render partial: 'sidebar/dropdown', locals: { question: question } %>
-				<% end %>
+				<%= render partial: 'sidebar/' + question.question_type.gsub(' ', '_').downcase, locals: { question: question } if question.question_type != "" %>
 			</div>
-	</div>
+		</div>
 
-	<!-- Question Logic -->
-	<div class="col-12">
-
+		<!-- Question Logic -->
+		<div class="row fill-width" id="question-logic">
+			<%= render partial: 'sidebar/logic/logic', locals: { question: question, questions: questions } if question.question_type != "" %>
+		</div>
 	</div>
 </div>

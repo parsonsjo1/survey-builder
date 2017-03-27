@@ -8,9 +8,13 @@ $('#survey-questions').on('click', '.question-box', function(event) {
 	// Remove previous active question and update new active question
 	$('.question-box').removeClass('active-question');
 	$('#' + questionId).addClass('active-question');
-
+	$('.question-box').each(function(index) {
+		if(!$(this).hasClass('active-question')) {
+			$(this).css('border', 'dotted black');
+		}
+	});
 	// Update sidebar with question number
-	console.log('clicked ' + questionId + ' number ' + question);
+	//console.log('clicked ' + questionId + ' number ' + question);
 	updateSidebarTitle(question);
 
 	let baseUri = event.currentTarget.baseURI;
@@ -21,16 +25,16 @@ $('#survey-questions').on('click', '.question-box', function(event) {
 // Edit question title by changing element to input
 $('#survey-questions').on('click', '.question-title', function(event) {
 	event.stopPropagation();
-	console.log('clicked question title');
+	//console.log('clicked question title');
 	id = event.currentTarget.closest('.question-box').id;
-	console.log(id);
-	questionTitleElement = $('#' + id).find('h3').first();
-	console.log(questionTitleElement);
+	//console.log(id);
+	questionTitleElement = $('#' + id).find('.question-title').first();
+	//console.log(questionTitleElement);
 	$isEditable = questionTitleElement.is('input');
-	console.log($isEditable);
+	//console.log($isEditable);
 	if(!$isEditable) {
-		questionTitleElement.replaceWith('<input value="' + questionTitleElement.text() + '">' + '</input>');
-		questionTitleElement = $('#' + id).find('input').first();
+		questionTitleElement.replaceWith('<input class="question-title fill-width fill-height" value="' + questionTitleElement.text() + '">' + '</input>');
+		questionTitleElement = $('#' + id).find('.question-title').first();
 		questionTitleElement.focus().val(questionTitleElement.val());
 	}
 });
@@ -41,7 +45,7 @@ $('#survey-questions').on('blur', '.question-title', function(event) {
 	id = event.currentTarget.closest('.question-box').id;
 	questionTitleElement = $('#' + id).find('input').first();
 	//console.log(questionTitleElement);
-	questionTitleElement.replaceWith('<h3>' + questionTitleElement.val() + '</h3>');
+	questionTitleElement.replaceWith('<div class="question-title">' + questionTitleElement.val() + '</div>');
 
 	//Update question title
 	//console.log(event.currentTarget.baseURI);
@@ -51,6 +55,17 @@ $('#survey-questions').on('blur', '.question-title', function(event) {
 	//console.log(id.split("-")[1]);
 	updateQuestionTitle(surveyId, id.split("-")[1], questionTitleElement.val());
 
+});
+
+// Highlight question box border with background color
+$('#survey-questions').on('mouseenter', '.question-box', function(event) {
+	$(this).css('border', 'solid ' + $('#survey-title-box').css('background-color'));
+});
+
+$('#survey-questions').on('mouseleave', '.question-box', function(event) {
+	if(!$(this).hasClass('active-question')) {
+		$(this).css('border', 'dotted black');
+	}
 });
 
 

@@ -7,13 +7,15 @@
 <div class="container-fluid fill">
 	<div class="row no-gutters fill-min">
 
-		<div class="col-8 offset-1" id="survey">
+		<div class="col-8 offset-1 survey" id="survey-<%= @survey.id %>">
 
       <!-- Survey title box and title -->
-			<div class="row no-gutters align-items-center" id="survey-title-box">
-					<div class="col-4 offset-1">
-						<h1 id="survey-title" ><%= @survey.title %></h1>
-<!-- 						<= link_to @survey.title, {contoller: 'survey', action: 'update', survey: { title: } }, {class: 'active', method: 'patch', remote: true}%> -->
+			<div class="row no-gutters align-items-center highlight" id="survey-title-box">
+					<div class="col-10 offset-1 highlight">
+						<div id="survey-title" ><%= @survey.title %></div>
+					</div>
+					<div class="col-1 highlight" id="survey-color-box">
+						<div id="survey-color"><%= @survey.color %></div>
 					</div>
 			</div>
 			
@@ -29,12 +31,6 @@
 
     <!-- Sidebar -->
 		<div class="col-3" id="sidebar">
-			<div class="row no-gutters align-items-center" id="sidebar-question-title">
-				<div class="col-12">
-					<!-- Dynamically change to active question number -->
-					<h1>Question #</h1>
-				</div>
-			</div>
 
 			<!-- Sidebar question content added dynamically -->
 

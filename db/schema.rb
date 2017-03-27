@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327013351) do
+ActiveRecord::Schema.define(version: 20170327162415) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "response_id", null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170327013351) do
   create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "survey_id",                              null: false
     t.string   "title"
+    t.integer  "sequence"
     t.boolean  "is_required"
     t.boolean  "allow_multiple_answers", default: false
     t.string   "question_type"

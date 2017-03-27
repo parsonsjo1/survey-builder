@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   
   def index
     @questions = Question.all
-    render json: sequence
+
   end
 
   def new
@@ -12,17 +12,12 @@ class QuestionsController < ApplicationController
   end
 
   def create
-
-    @question = Question.create(question_params)
+    questions = Question.where(survey_id: params[:question][:survey_id])
+    sequence = questions.length + 1
+    @question = Question.create(question_params.merge(sequence: sequence))
     #@question = Question.new(survey_id: 21, title: "New Question", is_required: false, question_type: "")
 
     respond_to do |format|
-
-        # questions = Question.where(survey_id: params[@question.survey_id])
-
-        #Don't think I need this sequence number anymore because of javascript change
-        #question_index = questions.index{|h| h[:id] == @question.id}
-        #sequence = question_index + 1
 
         #http://guides.rubyonrails.org/working_with_javascript_in_rails.html
         format.js {}
@@ -34,9 +29,11 @@ class QuestionsController < ApplicationController
     #survey_question GET    /surveys/:survey_id/questions/:id(.:format)        questions#show
 
     @question = Question.find(params[:id])
-
-    render partial: 'sidebar/sidebar_question_content', locals: { question: @question }
-
+    @questions = Question.where(survey_id: @question.survey_id)
+    respond_to do |format|
+        #http://guides.rubyonrails.org/working_with_javascript_in_rails.html
+        format.js {}
+    end
   end
 
   def edit

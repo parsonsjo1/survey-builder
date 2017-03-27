@@ -1,2 +1,2 @@
-$("label[for=checkbox-choice-<%= @choice.id.to_s %>]").text("<%= @choice.value %>");
-$("label[for=radio-choice-<%= @choice.id.to_s %>]").text("<%= @choice.value %>");
+$("label[for=checkbox-choice-<%= j(@choice.id.to_s) %>]").text("<%= j(@choice.value) %>");
+$("label[for=radio-choice-<%= j(@choice.id.to_s) %>]").text("<%= j(@choice.value) %>");
