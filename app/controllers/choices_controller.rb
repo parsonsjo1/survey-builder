@@ -18,6 +18,14 @@ class ChoicesController < ApplicationController
   end
 
   def show
+    @choice = Choice.find(params[:id])
+    @questions = Question.where(choice_id: @choice.id)
+    @survey = Survey.find(params[:survey_id])
+
+    respond_to do |format|
+      format.json { render json: @choice.to_json }
+      format.js {}
+    end
   end
 
   def edit

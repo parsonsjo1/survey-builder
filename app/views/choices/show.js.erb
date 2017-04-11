@@ -1,0 +1,4 @@
+$('.new-child-question-box').empty();
+
+$('#new-child-question-box-<%= j(@choice.question_id.to_s) %>').append('<%= j(render partial: "questions/question_box/new_question_box", locals: {survey: @survey, choice_id: @choice.id }) %>');
+$("#new-question-box-<%= j(@choice.id.to_s)%>").closest(".new-child-question-box").before("<%= j(render partial: 'questions/question_box/question_box', collection: @questions, locals: { question_box_type: 'child' }) %>");

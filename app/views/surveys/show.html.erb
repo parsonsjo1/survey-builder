@@ -1,2 +1,36 @@
-<h1>Surveys#show</h1>
-<p>Find me in app/views/surveys/show.html.erb</p>
+<style>
+  #survey-title-box {
+    background-color: <%= @survey.color %>;
+  }
+</style>
+
+<div class="container-fluid fill">
+  <div class="row no-gutters fill-min">
+
+    <div class="col-8 offset-1">
+
+      <!-- Survey title box and title -->
+      <div class="row no-gutters align-items-center">
+          <div class="col-10 offset-1">
+            <div><%= @survey.title %></div>
+          </div>
+      </div>
+
+      <!-- Survey Description -->
+      <div class="row no-gutters">
+        <div class="col-10 offset-1">
+          <div class="fill-width"><%=@survey.description%></div>
+        </div>
+      </div>
+      
+      <!-- Survey questions -->
+      <div class="row no-gutters align-items-center">
+        <%= render partial: "questions/question_box/question_box", collection: @questions, locals: { question_box_type: 'parent' } %>
+      </div>
+
+    </div>
+
+    <%= render partial: "sidebar/sidebar", locals: { survey: @survey } %>
+    
+  </div>
+</div>  

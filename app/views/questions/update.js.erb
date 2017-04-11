@@ -1,3 +1,2 @@
-$("<%= j(render partial: 'questions/' + @question.question_type.gsub(' ', '_').downcase, locals: { question: @question }) %>").appendTo($('#question-' + "<%= @question.id %>").find('.question-content').first());
-$("<%= j(render partial: 'sidebar/' + @question.question_type.gsub(' ', '_').downcase, locals: { question: @question }) %>").appendTo('#question-type-content');
-$("<%= j(render partial: 'sidebar/logic/logic', locals: { question: @question, questions: @questions }) %>").appendTo('.question-logic');
+$('#question-box-' + "<%= @question.id %>").find('.question-content').first().append("<%= j(render partial: 'questions/' + @question.question_type.gsub(' ', '_').downcase, locals: { question: @question }) %>");
+$('#question-type-content').append("<%= j(render partial: 'sidebar/question_box/question_types/' + @question.question_type.gsub(' ', '_').downcase, locals: { question: @question }) %>");

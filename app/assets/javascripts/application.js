@@ -15,24 +15,3 @@
 //= require bootstrap
 //= require jquery_ujs
 //= require_tree .
-
-
-
-// Functions in alphabetical order
-
-// These will help reconcile duplicate code between surveys.js and questions.js edit and display functions
-// var displayElement = function(idName) {
-// 	let id = '#' + idName;
-// 	$(id).replaceWith('<h1 id="' + idName + '">' + $(id).val() + '</h1>');
-// };
-
-// var editElement = function(idName) {
-// 	let id = '#' + idName;
-// 	$isEditable = $(id).is('input');
-// 	//console.log($isEditable);
-// 	if(!$isEditable) {
-// 		$(id).replaceWith('<input id="' + idName + '" value="' + $(id).text() + '">' + '</input>');
-// 		$(id).focus().val($(id).val());
-// 	}
-// };
-

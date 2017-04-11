@@ -1,0 +1,20 @@
+.new-question-box {
+
+  &:hover {
+    cursor: default;
+  }
+
+  #new-question {
+  height: inherit;
+  line-height: 300px; /*Needs to be the same as height for vertical alignment*/
+
+    .btn, .button_to {
+      vertical-align: middle;
+      width: 100%;
+    }
+  }
+}
+
+.new-child-question-box {
+  margin: 25px auto;
+}

@@ -25,6 +25,10 @@ Rails.application.routes.draw do
     resources :answers
   end
 
+  resources :choices do
+    resources :questions
+  end
+
   resources :answers do
     resources :choices
   end

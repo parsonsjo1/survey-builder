@@ -1,4 +1,8 @@
-<div class="col-10 offset-1 question-<%= question.id %>" id="sidebar-choice-list">
+<div class="col-12 question-<%= question.id %>" id="sidebar-choice-list">
+  <div class="row no-gutters" id="placeholder-row">
+    <div class="col-4">Placeholder:</div>
+    <div class="col-8 highlight" id="placeholder-value"><%= question.placeholder %></div>
+  </div>
 	<%= render partial: 'sidebar/choice', collection: question.choices %>
 	<!-- Add button to add choice values -->
 <!-- 	<button class="btn btn-warning" id="add-new-choice-button" type="button">Add Choice</button> -->

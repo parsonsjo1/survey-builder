@@ -5,7 +5,7 @@ $('#survey-title-box').on('click', '#survey-title', function() {
 	$isEditable = $('#survey-title').is('input');
 
 	if(!$isEditable) {
-		$('#survey-title').replaceWith('<input class="fill-width" id="survey-title" value="' + $('#survey-title').text() + '">' + '</input>');
+		$('#survey-title').replaceWith('<input class="fill-width" id="survey-title" value="' + $('#survey-title').text() + '"></input>');
 		$('#survey-title').focus().val($('#survey-title').val());
 	}
 });
@@ -18,7 +18,7 @@ $('#survey-title-box').on('blur', '#survey-title', function(event) {
 	//Update survey title
 	let baseUri = event.currentTarget.baseURI;
 	let userId = getUserId(baseUri);
-	let surveyId = getSurveyId(baseUri);
+  let surveyId = $('.survey')[0].id.split('-')[1];
 	updateSurveyTitle(userId, surveyId, $('#survey-title').text());
 
 });
@@ -28,7 +28,7 @@ $('.survey').on('click', '#survey-title-box', function() {
 	$isEditable = $('#survey-color').is('input');
 
 	if(!$isEditable) {
-		$('#survey-color').replaceWith('<input class="fill-width" id="survey-color" value="' + $('#survey-color').text() + '">' + '</input>');
+		$('#survey-color').replaceWith('<input class="fill-width" id="survey-color" value="' + $('#survey-color').text() + '"></input>');
 		$('#survey-color').focus().val($('#survey-color').val());
 	}
 });
@@ -41,7 +41,7 @@ $('.survey').on('blur', '#survey-title-box', function(event) {
 	//Update survey color
 	let baseUri = event.currentTarget.baseURI;
 	let userId = getUserId(baseUri);
-	let surveyId = getSurveyId(baseUri);
+  let surveyId = $('.survey')[0].id.split('-')[1];
 	updateSurveyColor(userId, surveyId, $('#survey-color').text());
 
 });
@@ -83,7 +83,6 @@ var updateSurveyColor = function(userId, surveyId, newSurveyColor) {
 
 };
 
-//update survey title by calling controller with put method
 var updateSurveyTitle = function(userId, surveyId, newSurveyTitle) {
 	//console.log("Update survey title " + newSurveyTitle);
 	let dataToSend = { id: surveyId, user_id: userId, survey: { title: newSurveyTitle }};
@@ -103,5 +102,43 @@ var updateSurveyTitle = function(userId, surveyId, newSurveyTitle) {
 
 };
 
+$('.survey').on('click', '#survey-description', function(event) {
+	$isEditable = $('#survey-description').is('input');
 
+	if(!$isEditable) {
+		$('#survey-description').replaceWith('<input class="fill-width" id="survey-description" type="text" name="description" placeholder="Description" value="' + $('#survey-description').text() + '"></input>');
+		$('#survey-description').focus().val($('#survey-description').val());
+	}
+});
+
+$('.survey').on('blur', '#survey-description', function(event) {
+	console.log('blur');
+
+	$('#survey-description').replaceWith('<div class="fill-width highlight" id="survey-description">' + $('#survey-description').val() + '</div>');
+
+	let baseUri = event.currentTarget.baseURI;
+	let userId = getUserId(baseUri);
+  let surveyId = $('.survey')[0].id.split('-')[1];
+	updateSurveyDescription(userId, surveyId, $('#survey-description').text());
+
+});
+
+var updateSurveyDescription = function(userId, surveyId, newSurveyDescription) {
+
+	let dataToSend = { id: surveyId, user_id: userId, survey: { description: newSurveyDescription }};
+
+	$.ajax({
+		url: '/users/' + userId + '/surveys/' + surveyId, 
+		method: "PUT",
+		data: dataToSend,
+		dataType: "json"
+	}).success(function(data) {
+			console.log("success survey description updated");
+			console.log(data);
+	}).error(function(error) {
+			console.log("error survey survey-description not updated");
+			console.log(error);
+	});
+
+};
 

@@ -1,2 +1,6 @@
-$('#sidebar').empty();
-$('#sidebar').append('<%= j(render partial: "sidebar/sidebar_question_content", locals: { question: @question, questions: @questions })%>');
+//show required checkbox if there is a question type
+//else hide
+
+// render partial type
+$('#sidebar-question-box').empty();
+$('#sidebar-question-box').append('<%= j(render partial: "sidebar/question_box/question_box", locals: { question: @question })%>');

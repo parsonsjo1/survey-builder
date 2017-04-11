@@ -1,0 +1,40 @@
+.question-box, .new-question-box {
+  border-style: dotted;
+  min-height: 300px;
+  margin-top: 25px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .question-title {
+    height: 30px;
+  }
+
+  .question-delete {
+    text-align: center;
+    padding: 5px 10px 0px 0px;
+  }
+
+  .question-content {
+    text-align: center;
+
+    #freeresponse-textarea {
+      width: 100%;
+      border-radius: 5px;
+      max-height: 200px;
+    }
+
+    .question-box-dropdown {
+      width: 100%;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.active-question {
+  border: solid green;
+}

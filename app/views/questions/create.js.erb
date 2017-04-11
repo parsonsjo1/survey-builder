@@ -1,2 +1,6 @@
 
-$("<%= j(render @question) %>").appendTo("#survey-questions");
+<% if @question.choice_id.to_s != '' %>
+  $("#new-question-box-<%= j(@question.choice_id.to_s)%>").closest(".new-child-question-box").before("<%= j(render partial: 'questions/question_box/question_box', locals: { survey: @survey, question_box: @question, question_box_type: 'child' }) %>");
+<% else %>
+  $("#survey-questions").append("<%= j(render partial: 'questions/question_box/question_box', locals: { survey: @survey, question_box: @question, question_box_type: 'parent' }) %>");
+<% end %>

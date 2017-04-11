@@ -1,0 +1,5 @@
+<div class="col-10 offset-1 new-question-box" id="new-question-box-<%=choice_id.to_s%>">
+	<div class="col-6 offset-3" id="new-question">
+		<%= button_to "Add New Question" , { controller: 'questions', action: 'create', question: {survey_id: survey.id, choice_id: choice_id,  title: "New Question", is_required: false, question_type: "" }}, { class: 'btn btn-primary', method: 'post', remote: true } %>
+	</div>
+</div>

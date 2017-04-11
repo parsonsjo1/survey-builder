@@ -1,0 +1,27 @@
+
+<div class="col-10 offset-1 question-box <%= question_box_type %>-box" id="question-box-<%= question_box.id %>">
+	<div class="row no-gutters">
+
+		<div class="col-10 offset-1 highlight">
+			<div class="question-title" id="sequence-<%= question_box.sequence %>"><%= question_box.title %></div>
+		</div>
+
+		<div class="col-1 question-delete">
+      <%= button_to "X" , { controller: 'questions', action: 'destroy', id: question_box.id }, { class: 'btn btn-danger delete-question-button', method: 'delete', remote: true } %>
+		</div>
+
+	</div>
+
+	<div class="row no-gutters min-height align-items-center">
+
+		<div class="col-12 question-content">
+			<%= render partial: 'questions/' + question_box.question_type.gsub(' ', '_').downcase, locals: { question: question_box } if question_box.question_type != "" %>
+		</div>
+		
+	</div>
+
+	<div class="row new-child-question-box" id="new-child-question-box-<%= question_box.id %>">
+
+	</div>
+
+</div>

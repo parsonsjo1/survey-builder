@@ -1,2 +1,0 @@
-class LogicController < ApplicationController
-end

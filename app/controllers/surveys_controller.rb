@@ -1,7 +1,7 @@
 require('securerandom')
 
 class SurveysController < ApplicationController
-  before_action :find_survey, only: [:edit, :update, :destroy]
+  before_action :find_survey, only: [:show, :edit, :update, :destroy]
 
   def index
     #Look up surveys for the current user
@@ -12,7 +12,7 @@ class SurveysController < ApplicationController
 
   def create
 
-    @survey = Survey.create(user_id: current_user.id, title: params[:survey][:title], color: "#CBE068", token: SecureRandom.uuid, is_active: false)
+    @survey = Survey.create(user_id: current_user.id, title: params[:survey][:title], description: "Description", color: "#CBE068", token: SecureRandom.uuid, is_active: false)
     #redirect_to user_surveys_path(current_user.id)
     #http://guides.rubyonrails.org/working_with_javascript_in_rails.html
     respond_to do |format|
@@ -29,10 +29,11 @@ class SurveysController < ApplicationController
   end
 
   def show
+    @questions = Question.where(survey_id: @survey.id, choice_id: nil)
   end
 
   def edit
-
+    @questions = Question.where(survey_id: @survey.id, choice_id: nil)
   end
 
   def update
@@ -62,7 +63,7 @@ class SurveysController < ApplicationController
 
   private
     def survey_params
-      params.require(:survey).permit(:title, :color, :is_active)
+      params.require(:survey).permit(:title, :description, :color, :is_active)
     end
 
     def find_survey

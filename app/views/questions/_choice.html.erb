@@ -1,11 +1,11 @@
-<div class="col-4 choice-<%= choice.id.to_s %>">
-  <div class="form-check form-check-inline">
+<div class="col-4 highlight choice-box" id="choice-<%= choice.id.to_s %>">
+  <div class="form-check form-check-inline center">
     <label class="form-check-label">
       <% if question.allow_multiple_answers == true %>
-        <input class="form-check-input checkbox-choice-<%=choice.id%>" type="checkbox">
+        <input class="form-check-input choice checkbox-choice-<%=choice.id%>" type="checkbox">
         <label for="checkbox-choice-<%=choice.id%>"><%=choice.value%></label>
       <% else %>
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radio-choice-<%=choice.id%>">
+        <input class="form-check-input choice" type="radio" name="inlineRadioOptions" id="radio-choice-<%=choice.id%>">
         <label for="radio-choice-<%=choice.id%>"><%=choice.value%></label>
       <% end %>
     </label>

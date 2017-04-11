@@ -1,2 +1,6 @@
-
-$('#question-<%= j(@question.id.to_s) %>').remove();
+$('#sidebar-title').text('');
+$('#sidebar-question-type').empty();
+$('#question-type-row').empty();
+$('#question-type-content').empty();
+$('#question-box-<%= j(@question.id.to_s) %>').remove();
+console.log('success deleting question box');

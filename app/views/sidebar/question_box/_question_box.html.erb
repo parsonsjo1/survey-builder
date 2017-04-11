@@ -1,0 +1,48 @@
+
+<div class="row" id="question-required-row">
+  <% if question.question_type != "" %>
+    <div class="col-4 center" id="required-label">Required:</div>
+    <div class="col-8 checkbox-column">
+      <label class="custom-control custom-checkbox">
+        <% if question.is_required == false %>
+          <input type="checkbox" class="custom-control-input" id="question-required">
+        <% else %>
+          <input type="checkbox" class="custom-control-input" id="question-required" checked>
+        <% end %>
+        <span class="custom-control-indicator"></span>
+      </label>
+    </div>
+  <% end %>
+</div>
+
+<div class="row" id="question-type-row">
+  <div class="col-4 center">Type:</div>
+  <div class="col-8">
+    <select class="custom-select" id="question-type">
+      <% if question.question_type == "" %>
+        <option value="0" selected></option>
+      <% else %>
+        <option value="0"></option>
+      <% end %>
+      <% if question.question_type == "Multiple Choice" %>
+        <option value="1" selected>Multiple Choice</option>
+      <% else %>
+        <option value="1">Multiple Choice</option>
+      <% end %>
+      <% if question.question_type == "Free Response" %>
+        <option value="2" selected>Free Response</option>
+      <% else %>
+        <option value="2">Free Response</option>
+      <% end %>
+      <% if question.question_type == "Dropdown" %>
+        <option value="2" selected>Dropdown</option>
+      <% else %>
+        <option value="2">Dropdown</option>
+      <% end %>
+    </select>
+  </div>
+</div>
+
+<div class="row" id="question-type-content">
+  <%= render partial: 'sidebar/question_box/question_types/' + question.question_type.gsub(' ', '_').downcase, locals: { question: question } if question.question_type != "" %>
+</div>

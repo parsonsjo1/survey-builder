@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327190638) do
+ActiveRecord::Schema.define(version: 20170411043629) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "response_id", null: false
@@ -29,24 +29,18 @@ ActiveRecord::Schema.define(version: 20170327190638) do
     t.index ["question_id"], name: "index_choices_on_question_id", using: :btree
   end
 
-  create_table "logics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "question_id"
-    t.integer  "if_choice_id"
-    t.integer  "show_question_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["question_id"], name: "index_logics_on_question_id", using: :btree
-  end
-
   create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "survey_id",                              null: false
+    t.integer  "choice_id"
     t.string   "title"
     t.integer  "sequence"
+    t.string   "placeholder"
     t.boolean  "is_required"
     t.boolean  "allow_multiple_answers", default: false
     t.string   "question_type"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.index ["choice_id"], name: "index_questions_on_choice_id", using: :btree
     t.index ["survey_id"], name: "index_questions_on_survey_id", using: :btree
   end
 
@@ -60,13 +54,14 @@ ActiveRecord::Schema.define(version: 20170327190638) do
   end
 
   create_table "surveys", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id",    null: false
-    t.string   "title",      null: false
+    t.integer  "user_id",     null: false
+    t.string   "title",       null: false
+    t.string   "description"
     t.string   "color"
-    t.string   "token",      null: false
-    t.boolean  "is_active",  null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "token",       null: false
+    t.boolean  "is_active",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["user_id"], name: "index_surveys_on_user_id", using: :btree
   end
 
@@ -81,7 +76,7 @@ ActiveRecord::Schema.define(version: 20170327190638) do
   add_foreign_key "answers", "responses"
   add_foreign_key "choices", "answers"
   add_foreign_key "choices", "questions"
-  add_foreign_key "logics", "questions"
+  add_foreign_key "questions", "choices"
   add_foreign_key "questions", "surveys"
   add_foreign_key "responses", "surveys"
   add_foreign_key "responses", "users"

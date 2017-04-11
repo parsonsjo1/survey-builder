@@ -1,0 +1,17 @@
+<div class="col-3" id="sidebar">
+
+  <div class="row no-gutters" id="sidebar-title-row">
+    <div class="col-10 offset-1"><h1 id="sidebar-title"></h1></div>
+  </div>
+
+  <div class="row no-gutters">
+    <div class="col-10 offset-1" id="sidebar-question-box"></div>
+  </div>
+
+  <div class="row no-gutters" id="preview-button-row">
+    <div class="col-10 offset-1">
+      <%=button_to "Preview Survey", { controller: 'surveys', action: 'show', user_id: current_user.id, id:survey.id }, { class: "btn btn-primary fill-width", method: 'get' }%>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,28 @@
+// Place all the styles related to the Surveys controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.survey {
+	padding: 0;
+	background-color: white;
+
+	border-style: none solid;
+	border-color: black;
+	border-width: 2px;
+
+  #survey-description-row {
+    margin: 25px auto;
+    
+    #survey-description {
+      font-size: 1em;
+      height: 30px;
+      //border-style: none none none none;
+    }
+
+  }
+
+  #survey-questions {
+    padding: 0;
+  }
+
+}

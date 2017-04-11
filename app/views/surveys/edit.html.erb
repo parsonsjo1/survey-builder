@@ -18,23 +18,25 @@
 						<div id="survey-color"><%= @survey.color %></div>
 					</div>
 			</div>
+
+			<!-- Survey Description -->
+			<div class="row no-gutters" id="survey-description-row">
+				<div class="col-10 offset-1 highlight">
+					<div class="fill-width" id="survey-description"><%=@survey.description%></div>
+				</div>
+			</div>
 			
-      <!-- Survey body and questions -->
+      <!-- Survey questions -->
 			<div class="row no-gutters align-items-center" id="survey-questions">
-				<%= render partial: "questions/question", collection: @survey.questions %>
+				<%= render partial: "questions/question_box/question_box", collection: @questions, locals: { question_box_type: 'parent' } %>
 			</div>
 			<div class="row no-gutters align-items-center" id="new-question">
-				<%= render partial: "questions/new_question", locals: {survey: @survey} %>
+				<%= render partial: "questions//question_box/new_question_box", locals: { survey: @survey, choice_id: "none" } %>
 			</div>
 
 		</div>
 
-    <!-- Sidebar -->
-		<div class="col-3" id="sidebar">
-
-			<!-- Sidebar question content added dynamically -->
-
-		</div>
+		<%= render partial: "sidebar/sidebar", locals: { survey: @survey } %>
 		
 	</div>
 </div>	

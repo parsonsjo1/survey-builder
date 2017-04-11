@@ -1,0 +1,53 @@
+#question-type-row {
+
+  #question-type {
+    width: 100%;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+
+#question-type-content {
+  .choice {
+    width: 100%;
+  }
+
+  #sidebar-choice-list {
+    //overflow-y: scroll;
+    //height: 300px;
+
+    div .choice {
+      margin: auto 0;
+      padding: 5px 0;
+
+      &:hover {
+        border-style: solid;
+        border-width: 1px;
+        border-color: gray;
+        cursor: pointer;
+      }
+
+    }
+
+    input .choice {
+      margin: 10px 0;
+
+    }
+
+    .delete-choice-button {
+      margin: 10px 0;
+      font-size: 1em;
+    }
+
+    #add-new-choice-button {
+      width: 100%;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  } 
+}

@@ -1,5 +1,0 @@
-<div class="col-8 offset-2 new-question-box" id="add-new-question-box">
-	<div class="col-6 offset-3" id="new-question">
-		<%= link_to "Add New Question" , { controller: 'questions', action: 'create', question: {survey_id: survey.id, title: "New Question", is_required: false, question_type: "" }}, { class: 'btn btn-primary', method: 'post', remote: true } %>
-	</div>
-</div>

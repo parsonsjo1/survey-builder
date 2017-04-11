@@ -1,9 +1,11 @@
 	
 <div class="col-6 offset-3">
 	<select class="custom-select question-box-dropdown">
+    <option class="" id="dropdown-placeholder-<%= question.id %>" value="" disabled selected><%= question.placeholder %></option>
     <!-- <= render partial: 'questions/dropdown_choice', collection: question.choices %> -->
-		<% question.choices.each_with_index do |choice, i| %>
-			<%= render partial: 'questions/dropdown_choice', locals: {choice: choice} %>
+		<% question.choices.each do |choice| %>
+      <option class="dropdown-choice dropdown-choice-<%= choice.id.to_s %>" id="dropdown-choice-<%= choice.id.to_s %>" value="<%= choice.value %>"><%= choice.value %></option>
+			<!-- <= render partial: 'questions/dropdown_choice', locals: {choice: choice} %> -->
 		<% end %>
 
 	</select>

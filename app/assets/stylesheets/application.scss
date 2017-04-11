@@ -19,26 +19,47 @@
 @import "choices.scss";
 @import "footer.scss";
 @import "header.scss";
-@import "questions.scss";
+
+@import "question_boxes/question_box.scss";
+@import "question_boxes/question_box_new.scss";
+@import "question_boxes/question_box_title.scss";
+
+@import "question_boxes/question_choices/choices.scss";
+
 @import "responses.scss";
-@import "surveys.scss";
+
+@import "survey/create_survey.scss";
+@import "survey/survey_page.scss";
+@import "survey/survey_title.scss";
+
 @import "users.scss";
-@import "sidebar.scss";
+
+@import "sidebar/sidebar.scss";
+
+@import "sidebar/question_options/question_box.scss";
+@import "sidebar/question_options/question_required.scss";
+@import "sidebar/question_options/question_type.scss";
+
 @import "question_logic.scss";
 
 html {
 	height: 100%;
-
 	body {
 		height: 100%;
-
-
 	}
+}
+
+.btn {
+	cursor: pointer;
+}
+
+.center {
+	margin: auto auto;
 }
 
 .checkbox-column {
 	text-align: right;
-
+	
 	.custom-checkbox {
 		margin-right: 0;
 
@@ -53,15 +74,7 @@ html {
 	padding: 0;
 }
 
-.btn {
-	cursor: pointer;
-}
-
-.fill {
-	height: 100%;
-}
-
-.fill-height {
+.fill, .fill-height {
   height: 100%;
 }
 
@@ -73,10 +86,21 @@ html {
 	min-height: 100%;
 }
 
+.form-check .form-check-inline .center {
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
 .highlight {
 	margin: auto auto;
 	&:hover {
 		border: solid gray thin;
 		cursor: pointer;
 	}
+}
+
+.min-height {
+	min-height: 300px;
 }
