@@ -1,0 +1,71 @@
+.radio-choice-display {
+  display: inline-block;
+  position: relative;
+  margin: 10px 0 0;
+
+  input[type=radio] {
+    display: none;
+  }  
+
+  label:before {
+    content: " ";
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin: 0 5px 0 0;
+    width: 25px;
+    height: 25px;
+    border-radius: 11px;
+    border: 1px solid #D7D7D7;
+    background-color: transparent;
+  }
+
+  input[type=radio]:checked + label:after {
+    content: " ";
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    margin: 0 5px 0 0;
+    width: 25px;
+    height: 25px;
+    border-radius: 11px;
+    border: 1px solid #888;
+    background-color: #BBB;
+  }
+}
+
+.checkbox-choice-display {
+  display: inline-block;
+  position: relative;
+  margin: 10px 0 0;    
+
+  input[type=checkbox] {
+    display: none;
+  }  
+
+  label:before {
+    content: " ";
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin: 0 5px 0 0;
+    width: 25px;
+    height: 25px;
+    border: 1px solid #D7D7D7;
+    background-color: transparent;
+  }
+
+  input[type=checkbox]:checked + label:after {
+    content: " ";
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    margin: 0 5px 0 0;
+    width: 25px;
+    height: 25px;
+    border: 1px solid #888;
+    background-color: #BBB;
+  }
+}

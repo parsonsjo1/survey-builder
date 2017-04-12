@@ -1,0 +1,56 @@
+#survey-display {
+  border-style: none solid none solid;
+}
+
+#survey-title-box-display {
+  height: 175px;
+
+  #survey-title-display {
+    font-size: 50px;
+    font-weight: 300;
+  }
+}
+
+#survey-description-row-display {
+  height: 100px;
+}
+
+#email-row-display {
+  margin-bottom: 50px;
+
+  input {
+    border-style: none none inset none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  label {
+    margin-top: 5px;
+    color: #d7d7d7;
+  }
+
+}
+
+#submit-survey-display {
+  margin: 75px 0;
+
+  button {
+    background-color: transparent;
+    border: 2px solid #555;
+    height: 70px;
+    width: 100%;
+    color: #555;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    &:hover {
+      background-color: #555;
+      color: white;
+      cursor: pointer;
+    }
+  }
+
+}

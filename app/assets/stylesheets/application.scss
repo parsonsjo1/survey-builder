@@ -13,12 +13,28 @@
  */
 
 /* Custom bootstrap variables must be set or imported *before* bootstrap.*/
+@import "jquery.selectric";
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+@import "font-awesome";
 
 @import "answers.scss";
 @import "choices.scss";
 @import "footer.scss";
 @import "header.scss";
+
+@import "display/survey/survey.scss";
+@import "display/survey/survey_body.scss";
+@import "display/survey/survey_title.scss";
+
+@import "display/questions/questions.scss";
+
+@import "display/questions/question_types/dropdown.scss";
+@import "display/questions/question_types/free_response.scss";
+@import "display/questions/question_types/multiple_choice.scss";
+@import "display/questions/question_types/question_types.scss";
+
+@import "display/sidebar/sidebar.scss";
 
 @import "question_boxes/question_box.scss";
 @import "question_boxes/question_box_new.scss";
@@ -103,4 +119,9 @@ html {
 
 .min-height {
 	min-height: 300px;
+}
+
+.open-sans, input {
+	font-family: 'Open Sans', sans-serif;
+	color: #555;
 }

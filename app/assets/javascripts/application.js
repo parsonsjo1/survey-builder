@@ -14,4 +14,5 @@
 //= require tether
 //= require bootstrap
 //= require jquery_ujs
+//= require jquery.selectric
 //= require_tree .

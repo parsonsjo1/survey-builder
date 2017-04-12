@@ -1,0 +1,15 @@
+
+
+<div class="row no-gutters" id="sidebar-title-row-display">
+  <div class="col-10 offset-1"><h1 id="sidebar-title-display">Emails</h1></div>
+</div>
+
+<div class="row no-gutters">
+  <div class="col-10 offset-1" id="sidebar-email-list"></div>
+</div>
+
+<div class="row no-gutters" id="submit-survey-row-display">
+  <div class="col-10 offset-1">
+    <%=button_to "Send Survey", { controller: 'surveys', action: 'show', user_id: current_user.id, id:survey.id }, { class: "btn btn-primary fill-width", method: 'get' }%>
+  </div>
+</div>

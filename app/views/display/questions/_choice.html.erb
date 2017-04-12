@@ -1,0 +1,13 @@
+
+
+<% if question.allow_multiple_answers == true %>
+  <div class="col-4 checkbox-choice-display" id="choice-<%= choice.id.to_s %>">
+    <input class="checkbox-display" id="checkbox-choice-<%=choice.id%>-display" type="checkbox">
+    <label for="checkbox-choice-<%=choice.id%>-display"><%=choice.value%></label>
+  </div>
+<% else %>
+    <div class="col-4 radio-choice-display" id="choice-<%= choice.id.to_s %>">
+      <input class="radio-display" type="radio" name="inlineRadioOptions" id="radio-choice-<%=choice.id%>-display">
+      <label for="radio-choice-<%=choice.id%>-display"><%=choice.value%></label>
+    </div>
+<% end %>

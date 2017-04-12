@@ -1,0 +1,20 @@
+<div class="col-10 offset-1 child-question-display child-question-choice-<%=child_question.choice_id%>-display">
+  <div class="row child-question-row-display" id="question-<%= child_question.id %>-display">
+
+
+    <div class="col-12">
+      <div class="question-title-display" id="sequence-<%= child_question.sequence %>-display"><%= child_question.title %></div>
+    </div>
+
+
+
+
+
+    <div class="col-12 question-type-display">
+      <%= render partial: 'display/questions/question_types/' + child_question.question_type.gsub(' ', '_').downcase, locals: { question: child_question } if child_question.question_type != "" %>
+    </div>
+      
+
+
+  </div>
+</div>

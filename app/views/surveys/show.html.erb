@@ -1,36 +1,52 @@
 <style>
-  #survey-title-box {
+  #survey-title-box-display {
     background-color: <%= @survey.color %>;
   }
 </style>
 
-<div class="container-fluid fill">
+<div class="container-fluid fill open-sans">
   <div class="row no-gutters fill-min">
 
-    <div class="col-8 offset-1">
+    <div class="col-8 offset-1" id="survey-display">
 
       <!-- Survey title box and title -->
-      <div class="row no-gutters align-items-center">
+      <div class="row no-gutters align-items-center" id="survey-title-box-display">
           <div class="col-10 offset-1">
-            <div><%= @survey.title %></div>
+            <div id="survey-title-display"><%= @survey.title %></div>
           </div>
       </div>
 
       <!-- Survey Description -->
-      <div class="row no-gutters">
+      <div class="row no-gutters align-items-center" id="survey-description-row-display">
         <div class="col-10 offset-1">
           <div class="fill-width"><%=@survey.description%></div>
         </div>
       </div>
+
+      <div class="row no-gutters" id="email-row-display">
+          <div class="col-10 offset-1">
+            <input class="fill-width" id="email-display" type="text" name="email"/>
+          </div>
+          <div class="col-10 offset-1">
+            <label for="email-display">Email</label>
+          </div>          
+      </div>
       
       <!-- Survey questions -->
       <div class="row no-gutters align-items-center">
-        <%= render partial: "questions/question_box/question_box", collection: @questions, locals: { question_box_type: 'parent' } %>
+        <%= render partial: "display/questions/question", collection: @questions, locals: { question_type: 'parent' } %>
+      </div>
+
+      <div class="row no-gutters" id="submit-survey-display">
+        <div class="col-2 offset-1">
+          <button>SUBMIT</button>
+        </div>
       </div>
 
     </div>
 
-    <%= render partial: "sidebar/sidebar", locals: { survey: @survey } %>
+    <div class="col-3" id="sidebar-display">
+      <%= render partial: "display/sidebar/sidebar", locals: { survey: @survey } %>
     
   </div>
 </div>  

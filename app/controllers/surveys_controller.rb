@@ -29,7 +29,7 @@ class SurveysController < ApplicationController
   end
 
   def show
-    @questions = Question.where(survey_id: @survey.id, choice_id: nil)
+    @questions = Question.where(survey_id: @survey.id, choice_id: nil)    
   end
 
   def edit
