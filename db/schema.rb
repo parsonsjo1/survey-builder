@@ -10,22 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170411043629) do
+ActiveRecord::Schema.define(version: 20170420175626) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "response_id", null: false
+    t.integer  "choice_id",   null: false
+    t.string   "value"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["choice_id"], name: "index_answers_on_choice_id", using: :btree
     t.index ["response_id"], name: "index_answers_on_response_id", using: :btree
   end
 
   create_table "choices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "answer_id"
-    t.integer  "question_id", null: false
+    t.integer  "question_id",      null: false
     t.string   "value"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["answer_id"], name: "index_choices_on_answer_id", using: :btree
+    t.boolean  "is_free_response"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.index ["question_id"], name: "index_choices_on_question_id", using: :btree
   end
 
@@ -56,6 +58,7 @@ ActiveRecord::Schema.define(version: 20170411043629) do
   create_table "surveys", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",     null: false
     t.string   "title",       null: false
+    t.string   "title_color"
     t.string   "description"
     t.string   "color"
     t.string   "token",       null: false
@@ -73,8 +76,8 @@ ActiveRecord::Schema.define(version: 20170411043629) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "answers", "choices"
   add_foreign_key "answers", "responses"
-  add_foreign_key "choices", "answers"
   add_foreign_key "choices", "questions"
   add_foreign_key "questions", "choices"
   add_foreign_key "questions", "surveys"

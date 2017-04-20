@@ -47,6 +47,10 @@ class QuestionsController < ApplicationController
     @question.update(question_params)
     @questions = Question.where(survey_id: @question.survey_id)
 
+    # create a choice for free response question if one has not yet been created
+    @choice = Choice.where(question_id: @question.id, is_free_response: true).take
+    @choice = Choice.create(question_id: @question.id, value: nil, is_free_response: true) if @choice == nil
+
     respond_to do |format|
       format.js {}
       format.json { render json: @question.to_json}

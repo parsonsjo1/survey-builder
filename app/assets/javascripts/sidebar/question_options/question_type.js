@@ -20,7 +20,7 @@ var updateQuestionType = function(surveyId, questionId, questionType) {
 
 
   // Add sidebar type content and question content if question type is not empty
-  if (questionType !== "Free Response" && questionType !== "Mutliple Choice") {
+  if (questionType !== "") {
 
     let dataToSend = { question: { question_type: questionType }};
 

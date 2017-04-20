@@ -2,12 +2,19 @@
   #survey-title-box-display {
     background-color: <%= @survey.color %>;
   }
+  #survey-title-display {
+    color: <%= @survey.title_color %>;
+  }
 </style>
 
 <div class="container-fluid fill open-sans">
   <div class="row no-gutters fill-min">
 
-    <div class="col-8 offset-1" id="survey-display">
+    <div class="col-1" id="back-col">
+      <i><%=link_to "", edit_user_survey_path(current_user.id, @survey.id) ,{ class: "fa fa-chevron-circle-left"}%></i>
+    </div>
+
+    <div class="col-8" id="survey-display">
 
       <!-- Survey title box and title -->
       <div class="row no-gutters align-items-center" id="survey-title-box-display">
@@ -47,6 +54,6 @@
 
     <div class="col-3" id="sidebar-display">
       <%= render partial: "display/sidebar/sidebar", locals: { survey: @survey } %>
-    
+    </div>
   </div>
 </div>  

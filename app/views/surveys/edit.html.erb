@@ -2,6 +2,9 @@
   #survey-title-box {
  	  background-color: <%= @survey.color %>;
   }
+  #survey-title, #survey-title-color {
+  	color: <%= @survey.title_color %>;
+  }
 </style>
 
 <div class="container-fluid fill">
@@ -11,7 +14,10 @@
 
       <!-- Survey title box and title -->
 			<div class="row no-gutters align-items-center highlight" id="survey-title-box">
-					<div class="col-10 offset-1 highlight">
+					<div class="col-1" id="survey-title-color-col">
+						<span id="survey-title-color" class="highlight"><%= @survey.title_color %></span>
+					</div>
+					<div class="col-10 highlight" id="survey-title-col">
 						<div id="survey-title" ><%= @survey.title %></div>
 					</div>
 					<div class="col-1 highlight" id="survey-color-box">

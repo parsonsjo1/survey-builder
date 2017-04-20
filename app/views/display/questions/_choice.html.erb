@@ -2,12 +2,12 @@
 
 <% if question.allow_multiple_answers == true %>
   <div class="col-4 checkbox-choice-display" id="choice-<%= choice.id.to_s %>">
-    <input class="checkbox-display" id="checkbox-choice-<%=choice.id%>-display" type="checkbox">
+    <input class="checkbox-display" id="checkbox-choice-<%=choice.id%>-display" type="checkbox" name="answer[]" value="<%=choice.id%>">
     <label for="checkbox-choice-<%=choice.id%>-display"><%=choice.value%></label>
   </div>
 <% else %>
     <div class="col-4 radio-choice-display" id="choice-<%= choice.id.to_s %>">
-      <input class="radio-display" type="radio" name="inlineRadioOptions" id="radio-choice-<%=choice.id%>-display">
+      <input class="radio-display" type="radio" name="answer[]" id="radio-choice-<%=choice.id%>-display" value="<%=choice.id%>">
       <label for="radio-choice-<%=choice.id%>-display"><%=choice.value%></label>
     </div>
 <% end %>

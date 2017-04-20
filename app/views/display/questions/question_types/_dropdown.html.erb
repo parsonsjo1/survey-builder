@@ -1,8 +1,8 @@
   
-<select class="question-dropdown-display selectric">
+<select class="question-dropdown-display selectric" name="dropdown[]">
   <option class="" id="dropdown-placeholder-<%= question.id %>-display" value="" selected="" disabled=""><%= question.placeholder %></option>
   <% question.choices.each do |choice| %>
-    <option class="dropdown-choice-display" id="dropdown-choice-<%= choice.id.to_s %>-display" value="<%= choice.value %>" style=" height:50px;"><%= choice.value %></option>
+    <option class="dropdown-choice-display" id="dropdown-choice-<%= choice.id.to_s %>-display" value="<%= choice.id %>" style=" height:50px;"><%= choice.value %></option>
   <% end %>
 
 </select>

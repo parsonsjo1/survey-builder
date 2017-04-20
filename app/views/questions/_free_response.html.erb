@@ -1,4 +1,7 @@
-  
 <div class="col-10 offset-1">
-  <textarea id="freeresponse-textarea"></textarea>
+  <% question.choices.each do |choice| %>
+    <% if choice.is_free_response == true %>
+      <input class="free-response-<%= question.id %>" id="free-response-<%=choice.id%>" type="text" name="free-response" value=""></input>
+    <% end %>
+  <% end %>
 </div>

@@ -1,3 +1,21 @@
+#back-col {
+  margin: auto auto;
+  text-align: center;
+
+  i {
+    font-size: 4em;
+    color: #0275D8;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    a:focus, a:hover {
+      text-decoration: none;
+    }
+  }
+}
+
 #survey-display {
   border-style: none solid none solid;
 }
@@ -36,7 +54,7 @@
 #submit-survey-display {
   margin: 75px 0;
 
-  button {
+  input, button {
     background-color: transparent;
     border: 2px solid #555;
     height: 70px;

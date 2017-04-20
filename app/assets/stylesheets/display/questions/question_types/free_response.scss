@@ -1,0 +1,12 @@
+.free-response {
+  padding: 0;
+
+  input {
+    border-style: none none inset none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+}

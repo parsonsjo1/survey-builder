@@ -10,6 +10,11 @@
 
 <div class="row no-gutters" id="submit-survey-row-display">
   <div class="col-10 offset-1">
-    <%=button_to "Send Survey", { controller: 'surveys', action: 'show', user_id: current_user.id, id:survey.id }, { class: "btn btn-primary fill-width", method: 'get' }%>
+    <%= form_tag(surveys_send_path(id: survey.id), method: 'get') do %>
+      <input class="fill-width" type="text" name="recipients"/>
+      <%=link_to "Send Survey", surveys_send_path(id: survey.id), { class: "btn btn-primary fill-width" }%>
+      <%= hidden_field_tag "id", survey.id%>
+      <%= submit_tag("Send Survey") %>
+    <% end %>
   </div>
 </div>

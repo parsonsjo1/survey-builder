@@ -1,0 +1,7 @@
+<div class="col-12 free-response">
+  <% question.choices.each do |choice| %>
+    <% if choice.is_free_response == true %>
+      <input class="fill-width free-response-<%= question.id %>" id="free-response-<%=choice.id%>" type="text" name="free-response[<%=choice.id%>]" value=""></input>
+    <% end %>
+  <% end %>
+</div>

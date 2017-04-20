@@ -5,6 +5,11 @@ Rails.application.routes.draw do
 
   delete '/logout', to: 'users#logout_user'
 
+  get '/surveys/send', to: 'surveys#send_survey'
+  get '/responses/send', to: 'responses#send_receipt'
+
+  get '/surveys/:token', to: 'responses#new'
+
   #put '/sidebar/questions/:id', to: 'sidebar#update'
 
   #namespace admin
@@ -17,8 +22,6 @@ Rails.application.routes.draw do
     resources :questions
     resources :responses
   end
-
-  #look into nested attributes
 
   resources :questions do
     resources :choices
