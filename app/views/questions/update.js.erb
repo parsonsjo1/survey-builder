@@ -1,5 +1,5 @@
 $('#question-box-' + "<%= @question.id %>").find('.question-content').first().append("<%= j(render partial: 'questions/' + @question.question_type.gsub(' ', '_').downcase, locals: { question: @question }) %>");
 $('#question-type-content').append("<%= j(render partial: 'sidebar/question_box/question_types/' + @question.question_type.gsub(' ', '_').downcase, locals: { question: @question }) %>");
-<% if @question.question_type = "Free Response" %>
+<% if @question.question_type == "Free Response" %>
   $('.free-response-<%= j(@question.id.to_s) %>').attr('id', 'free-response-<%= j(@choice.id.to_s) %>');
 <% end %>
