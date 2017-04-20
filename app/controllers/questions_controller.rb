@@ -48,8 +48,10 @@ class QuestionsController < ApplicationController
     @questions = Question.where(survey_id: @question.survey_id)
 
     # create a choice for free response question if one has not yet been created
-    @choice = Choice.where(question_id: @question.id, is_free_response: true).take
-    @choice = Choice.create(question_id: @question.id, value: nil, is_free_response: true) if @choice == nil
+    if @question.type == "Free Response"
+      @choice = Choice.where(question_id: @question.id, is_free_response: true).take
+      @choice = Choice.create(question_id: @question.id, value: nil, is_free_response: true) if @choice == nil
+    end
 
     respond_to do |format|
       format.js {}
