@@ -63,7 +63,7 @@ class SurveysController < ApplicationController
 
   def send_survey
 
-    SurveyMailer.send_survey(@survey, "sender_email", params[:recipients].split(';')).deliver_now;
+    SurveyMailer.send_survey(@survey, "sender_email", params[:recipients].split(';')).deliver_later;
     redirect_to user_surveys_path(current_user.id)
 
   end
