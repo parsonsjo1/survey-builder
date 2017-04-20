@@ -1,5 +1,6 @@
 class ResponsesController < ApplicationController
   layout 'response_layout'
+  skip_before_action :authenticate_user
 
   def index
   end
